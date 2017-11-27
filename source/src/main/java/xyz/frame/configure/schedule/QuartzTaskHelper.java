@@ -28,6 +28,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import xyz.frame.service.schedule.ScheduleTaskService;
+import xyz.frame.vo.ScheduleTaskVo;
+
 
 /**
  * Created by qiuxinjie on 14-11-26.
@@ -58,11 +61,11 @@ public class QuartzTaskHelper {
         }
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
 
-        List<ScheduleTaskVO> taskList = scheduleTaskService.getAllTask();
+        List<ScheduleTaskVo> taskList = scheduleTaskService.getAllTask();
 
         ClassLoadHelper helper = new SimpleClassLoadHelper();
 
-        for (ScheduleTaskVO scheduleTaskVO : taskList) {
+        for (ScheduleTaskVo scheduleTaskVO : taskList) {
         	//重启时把RUNNING置为NORMAL
         	if(QuartzTaskHelper.TaskState.RUNNING.name().equals(scheduleTaskVO.getStatus())){
         		scheduleTaskVO.setStatus(Trigger.TriggerState.NORMAL.name());	
@@ -118,7 +121,7 @@ public class QuartzTaskHelper {
 
     }
 
-    public void scheduleTask(ScheduleTaskVO scheduleTaskVO) throws SchedulerException, ClassNotFoundException {
+    public void scheduleTask(ScheduleTaskVo scheduleTaskVO) throws SchedulerException, ClassNotFoundException {
         ClassLoadHelper helper = new SimpleClassLoadHelper();
 
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
@@ -139,7 +142,7 @@ public class QuartzTaskHelper {
     /**
      * 暂停任务
      */
-    public void pauseTask(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
+    public void pauseTask(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         JobKey jobKey = JobKey.jobKey(scheduleTaskVO.getTaskName(), scheduleTaskVO.getTaskGroup());
         scheduler.pauseJob(jobKey);
@@ -148,7 +151,7 @@ public class QuartzTaskHelper {
     /**
      * 回复任务
      */
-    public void resumeTask(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
+    public void resumeTask(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         JobKey jobKey = JobKey.jobKey(scheduleTaskVO.getTaskName(), scheduleTaskVO.getTaskGroup());
         scheduler.resumeJob(jobKey);
@@ -157,7 +160,7 @@ public class QuartzTaskHelper {
     /**
      * 停止任务
      */
-    public void stopTask(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
+    public void stopTask(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         JobKey jobKey = JobKey.jobKey(scheduleTaskVO.getTaskName(), scheduleTaskVO.getTaskGroup());
         scheduler.deleteJob(jobKey);
@@ -166,7 +169,7 @@ public class QuartzTaskHelper {
     /**
      * 运行一次
      */
-    public void runOnceTask(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
+    public void runOnceTask(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         JobKey jobKey = JobKey.jobKey(scheduleTaskVO.getTaskName(), scheduleTaskVO.getTaskGroup());
         scheduler.triggerJob(jobKey);
@@ -175,7 +178,7 @@ public class QuartzTaskHelper {
     /**
      * 重新设置运行时间
      */
-    public void rescheduleJob(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
+    public void rescheduleJob(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
 
         TriggerKey triggerKey = TriggerKey.triggerKey(scheduleTaskVO.getTaskName(), scheduleTaskVO.getTaskGroup());
@@ -190,12 +193,12 @@ public class QuartzTaskHelper {
         scheduler.rescheduleJob(triggerKey, trigger);
     }
 
-    public List<ScheduleTaskVO> getRunningTasks() throws SchedulerException {
+    public List<ScheduleTaskVo> getRunningTasks() throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         List<JobExecutionContext> executingJobs = scheduler.getCurrentlyExecutingJobs();
-        List<ScheduleTaskVO> jobList = new ArrayList<ScheduleTaskVO>(executingJobs.size());
+        List<ScheduleTaskVo> jobList = new ArrayList<ScheduleTaskVo>(executingJobs.size());
         for (JobExecutionContext executingJob : executingJobs) {
-            ScheduleTaskVO job = new ScheduleTaskVO();
+            ScheduleTaskVo job = new ScheduleTaskVo();
             JobDetail jobDetail = executingJob.getJobDetail();
             JobKey jobKey = jobDetail.getKey();
             Trigger trigger = executingJob.getTrigger();
@@ -214,15 +217,15 @@ public class QuartzTaskHelper {
         return jobList;
     }
 
-    public List<ScheduleTaskVO> getPlanningTasks() throws SchedulerException {
+    public List<ScheduleTaskVo> getPlanningTasks() throws SchedulerException {
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
         GroupMatcher<JobKey> matcher = GroupMatcher.anyJobGroup();
         Set<JobKey> jobKeys = scheduler.getJobKeys(matcher);
-        List<ScheduleTaskVO> jobList = new ArrayList<ScheduleTaskVO>();
+        List<ScheduleTaskVo> jobList = new ArrayList<ScheduleTaskVo>();
         for (JobKey jobKey : jobKeys) {
             List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
             for (Trigger trigger : triggers) {
-                ScheduleTaskVO job = new ScheduleTaskVO();
+                ScheduleTaskVo job = new ScheduleTaskVo();
                 job.setTaskName(jobKey.getName());
                 job.setTaskGroup(jobKey.getGroup());
                 job.setDesc("触发器:" + trigger.getKey());

@@ -1,4 +1,4 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.service.impl.schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xyz.frame.common.TaskStateEnum;
+import xyz.frame.configure.schedule.QuartzTaskHelper;
 import xyz.frame.entity.ScheduleTask;
 import xyz.frame.mapper.ScheduleTaskMapper;
+import xyz.frame.service.schedule.ScheduleTaskService;
 import xyz.frame.utils.ServiceException;
+import xyz.frame.vo.ScheduleTaskVo;
 
 @Service("scheduleTaskService")
 public class ScheduleTaskServiceImpl implements ScheduleTaskService {
@@ -29,14 +32,14 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     private QuartzTaskHelper quartzTaskHelper;
     
     @Override
-    public List<ScheduleTaskVO> getAllTask() {
+    public List<ScheduleTaskVo> getAllTask() {
         logger.info("begin getAllTask...");
         List<ScheduleTask> tasks = scheduleTaskMapper.findScheduleTaskList();
         if (tasks != null) {
-            List<ScheduleTaskVO> list = new ArrayList<ScheduleTaskVO>();
+            List<ScheduleTaskVo> list = new ArrayList<ScheduleTaskVo>();
             for (ScheduleTask task : tasks) {
-                ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(task);
-                list.add(scheduleTaskVO);
+                ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(task);
+                list.add(scheduleTaskVo);
             }
             logger.info("allTasks:"+ tasks);
             return list;
@@ -45,7 +48,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     }
 
     @Override
-    public void saveOrUpdateTask(ScheduleTaskVO task) {
+    public void saveOrUpdateTask(ScheduleTaskVo task) {
         ScheduleTask scheduleTask = new ScheduleTask();
         scheduleTask.setName(task.getTaskName());
         scheduleTask.setTaskGroup(task.getTaskGroup());
@@ -74,29 +77,29 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     }
 
     @Override
-    public ScheduleTaskVO getOneTask(Long taskId) {
+    public ScheduleTaskVo getOneTask(Long taskId) {
         logger.info("getOneTask:taskId" + taskId);
         ScheduleTask scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
         return this.convertScheduleTask(scheduleTask);
     }
     
     /**
-     * 实体类转换ScheduleTask->ScheduleTaskVO
+     * 实体类转换ScheduleTask->ScheduleTaskVo
      */
-    private ScheduleTaskVO convertScheduleTask(ScheduleTask task) {
-        ScheduleTaskVO scheduleTaskVO = new ScheduleTaskVO();
-        scheduleTaskVO.setTaskName(task.getName());
-        scheduleTaskVO.setTaskId(task.getId());
-        scheduleTaskVO.setCronExpression(task.getCronExpression());
-        scheduleTaskVO.setDesc(task.getDescription());
-        scheduleTaskVO.setTaskGroup(task.getTaskGroup());
-        scheduleTaskVO.setJobClass(task.getJobClass());
-        scheduleTaskVO.setStatus(task.getStatus());
-        scheduleTaskVO.setNextRunningTime(task.getNextRunningTime() != null ? formatter.format(task.getNextRunningTime()) : null);
-        scheduleTaskVO.setPreRunningTime(task.getPreRunningTime() != null ? formatter.format(task.getPreRunningTime()) : null);
-        scheduleTaskVO.setRepeatInterval(task.getRepeatInterval() != null ? task.getRepeatInterval().intValue() : 0);
-        scheduleTaskVO.setType(task.getType() != null ? task.getType().intValue() : 1);
-        return scheduleTaskVO;
+    private ScheduleTaskVo convertScheduleTask(ScheduleTask task) {
+        ScheduleTaskVo scheduleTaskVo = new ScheduleTaskVo();
+        scheduleTaskVo.setTaskName(task.getName());
+        scheduleTaskVo.setTaskId(task.getId());
+        scheduleTaskVo.setCronExpression(task.getCronExpression());
+        scheduleTaskVo.setDesc(task.getDescription());
+        scheduleTaskVo.setTaskGroup(task.getTaskGroup());
+        scheduleTaskVo.setJobClass(task.getJobClass());
+        scheduleTaskVo.setStatus(task.getStatus());
+        scheduleTaskVo.setNextRunningTime(task.getNextRunningTime() != null ? formatter.format(task.getNextRunningTime()) : null);
+        scheduleTaskVo.setPreRunningTime(task.getPreRunningTime() != null ? formatter.format(task.getPreRunningTime()) : null);
+        scheduleTaskVo.setRepeatInterval(task.getRepeatInterval() != null ? task.getRepeatInterval().intValue() : 0);
+        scheduleTaskVo.setType(task.getType() != null ? task.getType().intValue() : 1);
+        return scheduleTaskVo;
     }
 
     @Override
@@ -105,8 +108,8 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
-            quartzTaskHelper.scheduleTask(scheduleTaskVO);
+            ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
+            quartzTaskHelper.scheduleTask(scheduleTaskVo);
             scheduleTask.setStatus(TaskStateEnum.NORMAL.name());
             scheduleTaskMapper.updateByPrimaryKeySelective(scheduleTask);
             logger.info("startTask success");
@@ -123,14 +126,14 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
-            if (!checkIsPlanning(scheduleTaskVO)) {
+            ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
+            if (!checkIsPlanning(scheduleTaskVo)) {
                 throw new ServiceException(11,"该任务不在计划中");
             }
-            if (checkIsRunning(scheduleTaskVO)) {
+            if (checkIsRunning(scheduleTaskVo)) {
             	throw new ServiceException(12,"该任务正在运行");
             }
-            quartzTaskHelper.pauseTask(scheduleTaskVO);
+            quartzTaskHelper.pauseTask(scheduleTaskVo);
             scheduleTask.setStatus(TaskStateEnum.PAUSED.name());
             scheduleTaskMapper.updateByPrimaryKeySelective(scheduleTask);
             return TaskStateEnum.PAUSED;
@@ -146,14 +149,14 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
-            if (!checkIsPlanning(scheduleTaskVO)) {
+            ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
+            if (!checkIsPlanning(scheduleTaskVo)) {
             	throw new ServiceException(11,"该任务不在计划中");
             }
-            if (checkIsRunning(scheduleTaskVO)) {
+            if (checkIsRunning(scheduleTaskVo)) {
             	throw new ServiceException(12,"该任务正在运行");
             }
-            quartzTaskHelper.resumeTask(scheduleTaskVO);
+            quartzTaskHelper.resumeTask(scheduleTaskVo);
             scheduleTask.setStatus(TaskStateEnum.NORMAL.name());
             scheduleTaskMapper.updateByPrimaryKeySelective(scheduleTask);
             return TaskStateEnum.NORMAL;
@@ -169,7 +172,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
+            ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);
             if (!checkIsPlanning(scheduleTaskVO)) {
             	throw new ServiceException(11,"该任务不在计划中");
             }
@@ -192,7 +195,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
+            ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);
             if (checkIsPlanning(scheduleTaskVO)) {
             	throw new ServiceException(11,"该任务不在计划中");
             }
@@ -213,7 +216,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         ScheduleTask scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
-            ScheduleTaskVO scheduleTaskVO = this.convertScheduleTask(scheduleTask);
+            ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);
             quartzTaskHelper.runOnceTask(scheduleTaskVO);
             return true;
         } catch (SchedulerException e) {
@@ -222,9 +225,9 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         }
     }
     
-    private boolean checkIsRunning(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
-        List<ScheduleTaskVO> list = quartzTaskHelper.getRunningTasks();
-        for (ScheduleTaskVO task : list) {
+    private boolean checkIsRunning(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
+        List<ScheduleTaskVo> list = quartzTaskHelper.getRunningTasks();
+        for (ScheduleTaskVo task : list) {
             if (task.getTaskName().equals(scheduleTaskVO.getTaskName())) {
                 return true;
             }
@@ -232,10 +235,10 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         return false;
     }
 
-    private boolean checkIsPlanning(ScheduleTaskVO scheduleTaskVO) throws SchedulerException {
-        List<ScheduleTaskVO> list = quartzTaskHelper.getPlanningTasks();
-        for (ScheduleTaskVO task : list) {
-            if (task.getTaskName().equals(scheduleTaskVO.getTaskName())) {
+    private boolean checkIsPlanning(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
+        List<ScheduleTaskVo> list = quartzTaskHelper.getPlanningTasks();
+        for (ScheduleTaskVo task : list) {
+            if (task.getTaskName().equals(scheduleTaskVo.getTaskName())) {
                 return true;
             }
         }

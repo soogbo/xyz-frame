@@ -1,10 +1,10 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.vo;
 
 /**
  * 定时任务
  * @author shisp
  */
-public class ScheduleTaskVO {
+public class ScheduleTaskVo {
     
     private Long taskId;
 

@@ -1,8 +1,9 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.service.schedule;
 
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import xyz.frame.common.TaskStateEnum;
+import xyz.frame.vo.ScheduleTaskVo;
 
 /**
  * 定时任务服务
@@ -14,14 +15,14 @@ public interface ScheduleTaskService {
      * http方法：get<br>
      * @return 所有任务
      */
-    public List<ScheduleTaskVO> getAllTask();
+    public List<ScheduleTaskVo> getAllTask();
 
     /**
      * 添加或修改任务(API)<br>
      * http方法：post<br>
      * @param task 任务
      */
-    public void saveOrUpdateTask(@NotNull(message="1|参数task不能为空")ScheduleTaskVO task);
+    public void saveOrUpdateTask(@NotNull(message="1|参数task不能为空")ScheduleTaskVo task);
 
     /**
      * 根据id获取任务(API)<br>
@@ -29,7 +30,7 @@ public interface ScheduleTaskService {
      * @param taskId 任务id
      * @return 任务VO对象
      */
-    public ScheduleTaskVO getOneTask(@NotNull(message="1|参数taskId不能为空")Long taskId);
+    public ScheduleTaskVo getOneTask(@NotNull(message="1|参数taskId不能为空")Long taskId);
     
     /**
      * 启动任务(API)<br>
