@@ -28,8 +28,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
-import xyz.frame.vo.ScheduleTaskVo;
 
 
 /**

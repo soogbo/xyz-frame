@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.common.ConfigKey;
+import xyz.frame.pojo.common.ConfigKey;
 import xyz.frame.utils.ConfigureProperties;
 import xyz.frame.utils.ServiceException;
 

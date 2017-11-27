@@ -1,4 +1,4 @@
-package xyz.frame.common;
+package xyz.frame.pojo.common;
 
 /**
  * @Description 常量类

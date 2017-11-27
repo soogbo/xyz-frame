@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 
-import xyz.frame.common.GroupTopicTagEnum;
+import xyz.frame.pojo.common.GroupTopicTagEnum;
 import xyz.frame.configure.rocketmq.RocketMQMessageService;
 
 /**

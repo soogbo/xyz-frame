@@ -1,4 +1,4 @@
-package xyz.frame.common;
+package xyz.frame.pojo.common;
 
 /**
  * 返回结果枚举

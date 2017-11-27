@@ -1,4 +1,4 @@
-package xyz.frame.entity;
+package xyz.frame.pojo.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;

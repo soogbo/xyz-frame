@@ -1,4 +1,4 @@
-package xyz.frame.common;
+package xyz.frame.pojo.common;
 
 /**
  * mq：group topic tag枚举

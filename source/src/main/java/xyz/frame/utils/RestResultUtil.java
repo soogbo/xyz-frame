@@ -1,6 +1,6 @@
 package xyz.frame.utils;
 
-import xyz.frame.common.ResultEnum;
+import xyz.frame.pojo.common.ResultEnum;
 
 /**
  * 返回信息包装工具类

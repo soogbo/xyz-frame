@@ -2,7 +2,7 @@ package xyz.frame.mapper;
 
 import java.util.List;
 
-import xyz.frame.entity.ScheduleTask;
+import xyz.frame.pojo.entity.ScheduleTask;
 
 public interface ScheduleTaskMapper /*extends FrameworkMapper<ScheduleTask,Long>*/{
     

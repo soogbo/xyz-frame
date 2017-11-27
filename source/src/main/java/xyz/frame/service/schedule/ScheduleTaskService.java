@@ -2,8 +2,9 @@ package xyz.frame.service.schedule;
 
 import java.util.List;
 import javax.validation.constraints.NotNull;
-import xyz.frame.common.TaskStateEnum;
-import xyz.frame.vo.ScheduleTaskVo;
+
+import xyz.frame.pojo.common.TaskStateEnum;
+import xyz.frame.pojo.vo.ScheduleTaskVo;
 
 /**
  * 定时任务服务

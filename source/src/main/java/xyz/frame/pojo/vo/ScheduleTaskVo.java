@@ -1,4 +1,4 @@
-package xyz.frame.vo;
+package xyz.frame.pojo.vo;
 
 /**
  * 定时任务

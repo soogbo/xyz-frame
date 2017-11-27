@@ -11,13 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.common.TaskStateEnum;
+import xyz.frame.pojo.common.TaskStateEnum;
 import xyz.frame.configure.schedule.QuartzTaskHelper;
-import xyz.frame.entity.ScheduleTask;
 import xyz.frame.mapper.ScheduleTaskMapper;
+import xyz.frame.pojo.entity.ScheduleTask;
+import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
 import xyz.frame.utils.ServiceException;
-import xyz.frame.vo.ScheduleTaskVo;
 
 @Service("scheduleTaskService")
 public class ScheduleTaskServiceImpl implements ScheduleTaskService {
