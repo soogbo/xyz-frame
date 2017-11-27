@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.pojo.common.ConfigKey;
-import xyz.frame.utils.ConfigurePropertiesIoStream;
 import xyz.frame.utils.ServiceException;
 
 /**
