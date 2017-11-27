@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import xyz.frame.pojo.common.ConfigKey;
-import xyz.frame.utils.ConfigureProperties;
+import xyz.frame.utils.ConfigurePropertiesIoStream;
 import xyz.frame.utils.ServiceException;
 
 /**
@@ -46,13 +46,12 @@ public class RocketMQMessageConsumerImpl implements RocketMQMessageConsumer {
 		this.isStartup = true;
 		consumer = new DefaultMQPushConsumer(consumerGroup);
 		/*获取配置文件数据两种方式：
-		    1.使用ConfigureProperties读取configure.properties的配置
-		    2.使用@Value("${}")读取application.yml中配置
-		    3.自定义类ReadProperties读取配置文件数据注入
-		    此处 2 3 暂未调通
-		    */
-        consumer.setNamesrvAddr(ConfigureProperties.getProperty(ConfigKey.CONSUMER_MQ_IP));
-//        consumer.setNamesrvAddr(readProperties.getConsumerMqIp());
+        1.使用ConfigurePropertiesIo类 通过io流读取configure.properties的配置
+        2.使用@Value("${}")读取application.properties中配置 需要自定义类注解@Configuration @PropertySource制定文件路径名
+        3.自定义类ReadProperties读取配置文件数据注入到类属性中
+                            如果此类不被水平管理，不能使用23方法
+        */
+        consumer.setNamesrvAddr(ConfigurePropertiesIoStream.getProperty(ConfigKey.CONSUMER_MQ_IP));
         consumer.setInstanceName(String.valueOf(System.currentTimeMillis()));
         for(String topic:topicList){
         	try {

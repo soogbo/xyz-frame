@@ -13,15 +13,16 @@ import org.springframework.stereotype.Service;
 import xyz.frame.pojo.common.ConfigKey;
 
 /**
- * 读取configure.properties配置文件
+ * 方式2：通用方式
+ * 读取configure.properties配置文件：使用io流读取
  */
 @Service
-public class ConfigureProperties {
+public class ConfigurePropertiesIoStream {
 
 	/**
 	 * 日志
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(ConfigureProperties.class);
+	private static final Logger logger = LoggerFactory.getLogger(ConfigurePropertiesIoStream.class);
 
 	/**
 	 * 配置项
@@ -37,7 +38,7 @@ public class ConfigureProperties {
 	static {
 		try {
 			properties.load(new InputStreamReader(
-					ConfigureProperties.class.getClassLoader().getResourceAsStream(ConfigKey.CONFIG_FILE), "UTF-8"));
+					ConfigurePropertiesIoStream.class.getClassLoader().getResourceAsStream(ConfigKey.CONFIG_FILE), "UTF-8"));
 		} catch (Exception e) {
 			logger.error("读取配置文件" + ConfigKey.CONFIG_FILE + "失败！");
 		}
