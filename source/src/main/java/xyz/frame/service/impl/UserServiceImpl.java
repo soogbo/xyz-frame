@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package xyz.frame.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import xyz.frame.mapper.UserMapper;
+import xyz.frame.pojo.entity.ScheduleTask;
+import xyz.frame.pojo.entity.User;
+import xyz.frame.service.UserService;
+
+/**
+ * @Description 
+ * @author shisp
+ * @date 2017年11月28日  下午8:12:41
+ */
+@Service("userService")
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+    
+    @Override
+    public List<User> findAllUser() {
+        List<User> selectAll = userMapper.selectAll();
+        List<User> findAllUser = userMapper.findAllUser();
+        return findAllUser;
+    }
+
+}
