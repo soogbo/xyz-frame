@@ -235,7 +235,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         return false;
     }
 
-    private boolean checkIsPlanning(ScheduleTaskVo scheduleTaskVO) throws SchedulerException {
+    private boolean checkIsPlanning(ScheduleTaskVo scheduleTaskVo) throws SchedulerException {
         List<ScheduleTaskVo> list = quartzTaskHelper.getPlanningTasks();
         for (ScheduleTaskVo task : list) {
             if (task.getTaskName().equals(scheduleTaskVo.getTaskName())) {

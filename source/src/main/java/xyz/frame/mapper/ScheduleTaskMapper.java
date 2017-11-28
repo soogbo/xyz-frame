@@ -2,15 +2,17 @@ package xyz.frame.mapper;
 
 import java.util.List;
 
-import xyz.frame.pojo.entity.ScheduleTask;
+import org.apache.ibatis.annotations.Select;
 
-public interface ScheduleTaskMapper /*extends FrameworkMapper<ScheduleTask,Long>*/{
+import xyz.frame.pojo.entity.ScheduleTask;
+import xyz.frame.utils.FrameMapper;
+
+public interface ScheduleTaskMapper extends FrameMapper<ScheduleTask>{
     
     /**
-     * @return 所有任务
+     * @return 所有cron任务
      */
-    /*@Select(value = { "select ",ScheduleTask.COLUMN_LIST," from ",ScheduleTask.TABLE_NAME, " where type = 1"})
-    @ResultMap(BASER_ESULT_MAP)*/
+    @Select(value = { "select ",ScheduleTask.COLUMN_LIST," from ",ScheduleTask.TABLE_NAME, " where type = 1"})
     public List<ScheduleTask> findScheduleTaskList();    
     
 }
