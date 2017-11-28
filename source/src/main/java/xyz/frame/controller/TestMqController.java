@@ -20,7 +20,7 @@ import xyz.frame.utils.RestResultUtil;
  */
 @RestController
 @RequestMapping("/testMq")
-public class ShispTestMqController {
+public class TestMqController {
 
 	@Autowired
 	private SubmitTestMqProducer submitTestMqProducer;
