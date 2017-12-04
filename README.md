@@ -20,7 +20,7 @@
 3.druid连接池配置
 4.集成quartz并数据库配置job
 5.u_user demo
-6.
+6.mybatis集成通用mapper and pagehelp
 
 
 计划添加功能：
