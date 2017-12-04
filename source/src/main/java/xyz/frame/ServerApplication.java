@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @author shisp
  * @date 2017年11月27日  下午2:28:20
  */
-@EnableWebMvc
+
 @MapperScan(basePackages = "xyz.frame.mapper")
 @SpringBootApplication
 public class ServerApplication {
