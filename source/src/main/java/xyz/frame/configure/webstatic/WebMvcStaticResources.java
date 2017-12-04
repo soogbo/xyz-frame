@@ -22,14 +22,14 @@
  * THE SOFTWARE.
  */
 
-package xyz.frame.webmvc;
+package xyz.frame.configure.webstatic;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * @Description 访问静态资源
+ * @Description 访问静态资源配置
  * @author liuzh
  * @since 2015-12-19 16:16
  */

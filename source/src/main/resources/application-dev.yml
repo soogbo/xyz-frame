@@ -23,6 +23,13 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
     
+    # 静态资源
+#    resources:
+#    static-locations:
+#      classpath:
+#        static
+    
 task.run.flag:
   false
 
+  
