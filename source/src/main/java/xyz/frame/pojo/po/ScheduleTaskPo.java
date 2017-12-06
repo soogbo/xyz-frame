@@ -1,4 +1,4 @@
-package xyz.frame.pojo.entity;
+package xyz.frame.pojo.po;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -12,8 +12,8 @@ import javax.persistence.Table;
  * 定时任务表
  */
 @Entity
-@Table(name = ScheduleTask.TABLE_NAME)
-public class ScheduleTask implements Serializable {
+@Table(name = ScheduleTaskPo.TABLE_NAME)
+public class ScheduleTaskPo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String TABLE_NAME = "s_schedule_task";

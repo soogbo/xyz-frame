@@ -1,4 +1,4 @@
-package xyz.frame.pojo.entity;
+package xyz.frame.pojo.po;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,8 +14,8 @@ import javax.persistence.Table;
  * 用户entity
  */
 @Entity
-@Table(name = User.TABLE_NAME)
-public class User implements Serializable {
+@Table(name = UserPo.TABLE_NAME)
+public class UserPo implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String TABLE_NAME = "u_user";
 

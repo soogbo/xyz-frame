@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xyz.frame.pojo.common.TaskStateEnum;
+import xyz.frame.pojo.po.ScheduleTaskPo;
 import xyz.frame.configure.schedule.QuartzTaskHelper;
 import xyz.frame.mapper.ScheduleTaskMapper;
-import xyz.frame.pojo.entity.ScheduleTask;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
 import xyz.frame.utils.ServiceException;
@@ -34,10 +34,10 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public List<ScheduleTaskVo> getAllTask() {
         logger.info("begin getAllTask...");
-        List<ScheduleTask> tasks = scheduleTaskMapper.findScheduleTaskList();
+        List<ScheduleTaskPo> tasks = scheduleTaskMapper.findScheduleTaskList();
         if (tasks != null) {
             List<ScheduleTaskVo> list = new ArrayList<ScheduleTaskVo>();
-            for (ScheduleTask task : tasks) {
+            for (ScheduleTaskPo task : tasks) {
                 ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(task);
                 list.add(scheduleTaskVo);
             }
@@ -49,7 +49,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
 
     @Override
     public void saveOrUpdateTask(ScheduleTaskVo task) {
-        ScheduleTask scheduleTask = new ScheduleTask();
+        ScheduleTaskPo scheduleTask = new ScheduleTaskPo();
         scheduleTask.setName(task.getTaskName());
         scheduleTask.setTaskGroup(task.getTaskGroup());
         scheduleTask.setRepeatInterval(task.getRepeatInterval());
@@ -58,7 +58,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         scheduleTask.setJobClass(task.getJobClass());
         scheduleTask.setType(task.getType());
         scheduleTask.setStatus(TaskStateEnum.NONE.name());
-        ScheduleTask isSelect = scheduleTaskMapper.selectByPrimaryKey(task.getTaskId());
+        ScheduleTaskPo isSelect = scheduleTaskMapper.selectByPrimaryKey(task.getTaskId());
         if (null == isSelect) {
             scheduleTask.setCreateAt(new Date());
             logger.info("save task:" + scheduleTask);
@@ -79,14 +79,14 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public ScheduleTaskVo getOneTask(Long taskId) {
         logger.info("getOneTask:taskId" + taskId);
-        ScheduleTask scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
+        ScheduleTaskPo scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
         return this.convertScheduleTask(scheduleTask);
     }
     
     /**
      * 实体类转换ScheduleTask->ScheduleTaskVo
      */
-    private ScheduleTaskVo convertScheduleTask(ScheduleTask task) {
+    private ScheduleTaskVo convertScheduleTask(ScheduleTaskPo task) {
         ScheduleTaskVo scheduleTaskVo = new ScheduleTaskVo();
         scheduleTaskVo.setTaskName(task.getName());
         scheduleTaskVo.setTaskId(task.getId());
@@ -105,7 +105,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public TaskStateEnum startTask(Long taskId) throws ServiceException {
         logger.info("startTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
@@ -123,7 +123,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public TaskStateEnum pauseTask(Long taskId) throws ServiceException {
         logger.info("pauseTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
@@ -146,7 +146,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public TaskStateEnum resumeTask(Long taskId) throws ServiceException {
         logger.info("resumeTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVo = this.convertScheduleTask(scheduleTask);
@@ -169,7 +169,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public TaskStateEnum stopTask(Long taskId) throws ServiceException {
         logger.info("stopTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);
@@ -192,7 +192,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public TaskStateEnum deleteTask(Long taskId) throws ServiceException {
         logger.info("stopTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);
@@ -213,7 +213,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     @Override
     public Boolean runOnceTask(Long taskId) throws ServiceException {
         logger.info("stopTask:taskId = " + taskId);
-        ScheduleTask scheduleTask = null;
+        ScheduleTaskPo scheduleTask = null;
         try {
             scheduleTask = scheduleTaskMapper.selectByPrimaryKey(taskId);
             ScheduleTaskVo scheduleTaskVO = this.convertScheduleTask(scheduleTask);

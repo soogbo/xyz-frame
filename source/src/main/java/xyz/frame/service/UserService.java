@@ -5,7 +5,7 @@ package xyz.frame.service;
 
 import java.util.List;
 
-import xyz.frame.pojo.entity.User;
+import xyz.frame.pojo.po.UserPo;
 
 /**
  * @Description 
@@ -14,6 +14,6 @@ import xyz.frame.pojo.entity.User;
  */
 public interface UserService {
 
-    List<User> findAllUser();
+    List<UserPo> findAllUser();
     
 }

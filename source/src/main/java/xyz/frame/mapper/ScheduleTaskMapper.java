@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 
-import xyz.frame.pojo.entity.ScheduleTask;
+import xyz.frame.pojo.po.ScheduleTaskPo;
 import xyz.frame.utils.FrameMapper;
 
-public interface ScheduleTaskMapper extends FrameMapper<ScheduleTask>{
+public interface ScheduleTaskMapper extends FrameMapper<ScheduleTaskPo>{
     
     /**
      * @return 所有cron任务
      */
-    @Select(value = { "select ",ScheduleTask.COLUMN_LIST," from ",ScheduleTask.TABLE_NAME, " where type = 1"})
-    public List<ScheduleTask> findScheduleTaskList();    
+    @Select(value = { "select ",ScheduleTaskPo.COLUMN_LIST," from ",ScheduleTaskPo.TABLE_NAME, " where type = 1"})
+    public List<ScheduleTaskPo> findScheduleTaskList();    
     
 }
