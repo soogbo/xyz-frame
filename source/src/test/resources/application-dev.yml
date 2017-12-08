@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  context-path: 
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.132.104.23:3306/xyz_frame?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&&useSSL=false
+    username: xyzframe
+    password: xyzframe
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    
+    # 静态资源
+#    resources:
+#    static-locations:
+#      classpath:
+#        static
+    
+task.run.flag:
+  false
+
+  

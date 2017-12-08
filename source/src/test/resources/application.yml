@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  http:
+      multipart:      
+        #最大支持文件大小
+        max-file-size: 10Mb 
+        #最大支持请求大小
+        max-request-size: 50Mb
+    
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+
+
+
