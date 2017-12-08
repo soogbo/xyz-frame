@@ -17,13 +17,13 @@ import xyz.frame.utils.RestResultUtil;
  * Created by shisp on 2017年11月24日.
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/test")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/user/all")
     public ResponseResult<?> submitTestMqProducer() {
         List<UserPo> findAllUser = userService.findAllUser();
         return RestResultUtil.success(findAllUser);

@@ -19,7 +19,7 @@ import xyz.frame.utils.RestResultUtil;
  * Created by shisp on 2017年11月24日.
  */
 @RestController
-@RequestMapping("/testMq")
+@RequestMapping("/test")
 public class TestMqController {
 
 	@Autowired
