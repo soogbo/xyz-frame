@@ -207,7 +207,44 @@
 		</dependency>
 		<!-- end web -->
 
-		<!-- 热部署模块 -->
+	<!-- lius.framework 
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-parent</artifactId>
+		<version>1.0.5.RELEASE</version>
+		<type>pom</type>
+	</dependency>
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-core</artifactId>
+		<version>1.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-http</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-web</artifactId>
+		<version>1.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-service</artifactId>
+		<version>1.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+		<groupId>lius.framework</groupId>
+		<artifactId>framework-dao</artifactId>
+		<version>1.0.5.RELEASE</version>
+	</dependency>
+lius.framework -->
+
+
+
+
+	<!-- 热部署模块 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
