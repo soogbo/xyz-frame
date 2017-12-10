@@ -49,6 +49,9 @@ public class HttpAspect {
 
 		// 参数
 		logger.info("args={}", joinPoint.getArgs());
+		
+		//使用线程变量即时
+		Profiler.begin();
 	}
 
 	@SuppressWarnings("unused")
@@ -74,7 +77,9 @@ public class HttpAspect {
 
 	@AfterReturning(returning = "object", pointcut = "log()")
 	public void doAfterReturning(Object object) {
-		logger.info("response={}", object.toString());
+		logger.info("response={}", FrameJsonUtils.toJson(object));
+		//使用线程变量即时
+		logger.info("time cost={}", Profiler.end()/1000+" 秒");
 	}
 
 }
