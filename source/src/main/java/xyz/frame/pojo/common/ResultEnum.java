@@ -7,6 +7,9 @@ package xyz.frame.pojo.common;
  * 负数：系统异常
  */
 public enum ResultEnum {
+    /**
+     * 统一异常返回结果
+     */
     UNKONW_ERROR(-1, "未知错误"),
     SUCCESS(0, "成功"),
 	SERVICE_ERROR(1, "业务处理错误");

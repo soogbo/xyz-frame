@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
+import xyz.frame.pojo.common.TaskStateEnum;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
 
@@ -37,8 +38,12 @@ import xyz.frame.service.schedule.ScheduleTaskService;
  */
 @Component
 public class QuartzTaskHelper {
-
-    public enum TaskState {NONE, NORMAL, PAUSED, RUNNING, DELETED, STOPPED, ERROR}
+    
+    /*public enum TaskState {
+        *//**
+         * 任务状态
+         *//*
+        NONE, NORMAL, PAUSED, RUNNING, DELETED, STOPPED, ERROR}*/
 
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -67,7 +72,7 @@ public class QuartzTaskHelper {
 
         for (ScheduleTaskVo scheduleTaskVO : taskList) {
         	//重启时把RUNNING置为NORMAL
-        	if(QuartzTaskHelper.TaskState.RUNNING.name().equals(scheduleTaskVO.getStatus())){
+        	if(TaskStateEnum.RUNNING.name().equals(scheduleTaskVO.getStatus())){
         		scheduleTaskVO.setStatus(Trigger.TriggerState.NORMAL.name());	
         	}
         	
