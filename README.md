@@ -1,9 +1,12 @@
 # xyz-frame
-
 # this is my springboot frame demo
 
 使用springboot架构搭建测试demo：
 
+版本：
+
+	20171214：添加mapper po类自动生成工具，junit测试demo，自定义线程池demo
+	
 编码规范：
 	建议：
 	1.阿里Java开发规范
@@ -14,7 +17,12 @@
 	1.所有类添加注释/** */
 	2.所有方法添加注释/** */(实现自定义接口不添加)
 	3.包名规范，xyz.frame.*
-	4.实体类统一规则：Po：表对应实体类，Vo：web展示/业务使用类，Bo：接收web参数类
+	4.实体类统一规则：
+		1.pojo包下：po vo bo dto enum constants等
+		2.实体类名在po包下，类名不需要加Po结尾，其他pojo类需要添加VoBoDto等
+		3.Po：表对应实体类，
+		4.Vo：web展示/业务使用类，
+		5.Bo：接收web参数类
 
 已有功能：
 1.统一异常管理
@@ -24,17 +32,20 @@
 4.集成quartz并数据库配置job
 5.u_user demo
 6.mybatis集成通用mapper and pagehelp
-
+7.（20171214）线程池demo
+8.（20171214）单元测试案例demo
+9.（20171214）mybatis自动生成mapper和entity
+10.
 
 计划添加功能：
 1.redis连接
 2.mongo连接
 3.mysql主从配置
-4.线程池demo
+4.
 5.web页面demo
 6.websock demo
-7.单元测试案例demo
-8.mybatis自动生成mapper和entity
+7.
+8.
 9.上传下载demo
 10.job demo
 11.httpclient

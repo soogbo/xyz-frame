@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import xyz.frame.pojo.po.UserPo;
+import xyz.frame.pojo.po.User;
 import xyz.frame.service.UserService;
 import xyz.frame.utils.ResponseResult;
 import xyz.frame.utils.RestResultUtil;
@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping(value = "/user/all")
     public ResponseResult<?> submitTestMqProducer() {
-        List<UserPo> findAllUser = userService.findAllUser();
+        List<User> findAllUser = userService.findAllUser();
         return RestResultUtil.success(findAllUser);
     }
 }

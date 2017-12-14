@@ -26,7 +26,11 @@ public class Profiler {
 
     public static void main(String[] args) throws Exception {
         Profiler.begin();
+        System.out.println("1do something now ！！！");
         TimeUnit.SECONDS.sleep(1);
+        System.out.println("2do something now ！！！");
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("3do something now ！！！");
         System.out.println("Cost: " + Profiler.end() + " mills");
     }
 }

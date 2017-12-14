@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.frame.mapper.UserMapper;
-import xyz.frame.pojo.po.UserPo;
+import xyz.frame.pojo.po.User;
 import xyz.frame.service.UserService;
 
 /**
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     
     @Override
-    public List<UserPo> findAllUser() {
+    public List<User> findAllUser() {
         return userMapper.selectAll();
     }
 
