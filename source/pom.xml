@@ -253,6 +253,7 @@ lius.framework -->
 	</dependencies>
 
 	<build>
+        <finalName>xyz-frame</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

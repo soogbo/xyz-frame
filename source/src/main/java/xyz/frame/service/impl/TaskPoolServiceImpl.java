@@ -37,23 +37,24 @@ public class TaskPoolServiceImpl<V> implements TaskPoolService {
 			logger.info("for i={}", i);
 //			final int t = i;
 
-			taskExecutor.execute(new FutureTask<>(() -> {
+			/*taskExecutor.execute(new FutureTask<>(() -> {
 				return null;
-			}));
+			}));*/
 
 			/*
 			 * future = taskExecutor.execute(() -> { logger.info("for i={}", t);
 			 * boolean flag = true; return flag; }); futureList.add(future);
 			 */
-
 			taskExecutor.execute(new Runnable() {
-				@Override
-				public void run() {
-
-				}
+			    @Override
+			    public void run() {
+			        Thread currentThread = Thread.currentThread();
+			        logger.info("now thread name={}", currentThread.getName());
+			    }
 			});
-
 		}
+
+
 		return futureList;
 
 	}
