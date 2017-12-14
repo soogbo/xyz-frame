@@ -48,7 +48,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     }
 
     @Override
-    public void saveOrUpdateTask(ScheduleTaskVo task) {
+    public ScheduleTask saveOrUpdateTask(ScheduleTaskVo task) {
         ScheduleTask scheduleTask = new ScheduleTask();
         scheduleTask.setName(task.getTaskName());
         scheduleTask.setTaskGroup(task.getTaskGroup());
@@ -74,6 +74,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
             logger.info("update task:" + scheduleTask);
             scheduleTaskMapper.updateByPrimaryKeySelective(scheduleTask);
         }
+        return scheduleTask;
     }
 
     @Override

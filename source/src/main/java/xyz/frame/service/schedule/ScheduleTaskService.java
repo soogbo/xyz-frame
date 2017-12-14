@@ -4,6 +4,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import xyz.frame.pojo.common.TaskStateEnum;
+import xyz.frame.pojo.po.ScheduleTask;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
 
 /**
@@ -22,8 +23,9 @@ public interface ScheduleTaskService {
      * 添加或修改任务(API)<br>
      * http方法：post<br>
      * @param task 任务
+     * @return ScheduleTask
      */
-    public void saveOrUpdateTask(@NotNull(message="1|参数task不能为空")ScheduleTaskVo task);
+    public ScheduleTask saveOrUpdateTask(@NotNull(message="1|参数task不能为空")ScheduleTaskVo task);
 
     /**
      * 根据id获取任务(API)<br>

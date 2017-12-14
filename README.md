@@ -5,7 +5,7 @@
 
 版本：
 
-	20171214：添加mapper po类自动生成工具，junit测试demo，自定义线程池demo
+	20171214：添加mapper po类自动生成工具，junit测试demo，自定义线程池demo，定时任务controller demo
 	
 编码规范：
 	建议：
@@ -25,18 +25,19 @@
 		5.Bo：接收web参数类
 
 已有功能：
-1.统一异常管理
-2.controller aspect管理
-2.rocketmq集成demo
-3.druid连接池配置
-4.集成quartz并数据库配置job
-5.u_user demo
-6.mybatis集成通用mapper and pagehelp
-7.（20171214）线程池demo
-8.（20171214）单元测试案例demo
-9.（20171214）mybatis自动生成mapper和entity
+01.统一异常管理
+02.controller aspect管理
+02.rocketmq集成demo
+03.druid连接池配置
+04.集成quartz并数据库配置job
+05.u_user demo
+06.mybatis集成通用mapper and pagehelp
+07.（20171214）线程池demo
+08.（20171214）单元测试案例demo
+09.（20171214）mybatis自动生成mapper和entity
 10.静态资源访问
 11.
+12.
 
 计划添加功能：
 1.redis连接
