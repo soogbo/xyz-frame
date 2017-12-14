@@ -3,9 +3,6 @@
  */
 package xyz.frame.service;
 
-import java.util.List;
-import java.util.concurrent.Future;
-
 /**
  * @Description 测试线程池
  * @author shisp
@@ -13,6 +10,6 @@ import java.util.concurrent.Future;
  */
 public interface TaskPoolService {
 
-    List<Future<?>> testTaskPool();
+    void testTaskPool();
     
 }

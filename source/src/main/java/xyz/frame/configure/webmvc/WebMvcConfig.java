@@ -22,21 +22,22 @@
  * THE SOFTWARE.
  */
 
-package xyz.frame.configure.webstatic;
+package xyz.frame.configure.webmvc;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * @Description 访问静态资源配置
+ * @Description mvc配置
+ *  1.@Configuration 
+ *  2.extends WebMvcConfigurerAdapter or WebMvcConfigurerSupport
  * @author liuzh
  * @since 2015-12-19 16:16
  */
-@EnableWebMvc //启用mvc java config
+//@EnableWebMvc //启用mvc java config
 @Configuration
-public class WebMvcStaticResources extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
