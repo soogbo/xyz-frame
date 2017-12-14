@@ -10,7 +10,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})
 @Configuration
 @ComponentScan
-//@WebAppConfiguration
+@WebAppConfiguration
 public class TestSpringApplication {
 
 }
