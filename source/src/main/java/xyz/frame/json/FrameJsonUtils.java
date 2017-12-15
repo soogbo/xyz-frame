@@ -1,10 +1,11 @@
 /**
  * 
  */
-package xyz.frame.utils;
+package xyz.frame.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * @Description json工具类
@@ -47,6 +48,11 @@ public class FrameJsonUtils {
      * @return json string
      */
     public static String toJson(Object src){
-        return JSON.toJSONString(src);
+        try {
+            return JacksonFormatDate.objectMapper.writeValueAsString(src);
+        } catch (JsonProcessingException e) {
+            throw new FrameworkJsonException("json序列化失败", e);
+        }
+//        return JSON.toJSONString(src);
     }
 }
