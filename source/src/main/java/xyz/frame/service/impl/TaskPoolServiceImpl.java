@@ -2,7 +2,6 @@ package xyz.frame.service.impl;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
 import xyz.frame.service.TaskPoolService;
 
 /**
- * @Description
+ * @Description 线程执行任务demo service
  * @author shisp
  * @date 2017年11月28日 下午8:12:41
  */
@@ -27,6 +26,8 @@ public class TaskPoolServiceImpl implements TaskPoolService {
 
 	@Resource(name = "commonTaskExecutor")
 	private ThreadPoolTaskExecutor taskExecutor;
+//	private TaskExecutor taskExecutor;
+//	private AsyncTaskExecutor taskExecutor; //使用同步接口注入，extents TaskExecutor；
 
 	@Override
 	public void testTaskPool() {
@@ -76,6 +77,6 @@ public class TaskPoolServiceImpl implements TaskPoolService {
 			 
 		}
 
-
+		
 	}
 }
