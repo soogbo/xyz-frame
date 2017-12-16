@@ -1,5 +1,9 @@
 package xyz.frame.service.impl;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -40,6 +44,28 @@ public class TaskPoolServiceImpl implements TaskPoolService {
 			        Thread currentThread = Thread.currentThread();
 			        logger.info("lambda ：now thread name={}", currentThread.getName());
 			});
+			
+			//方式3 ：执行Future任务获取异步计算结果
+			FutureTask<Long> futureTask = new FutureTask<>(new Callable<Long>() {
+				@Override
+				public Long call() throws Exception {
+					System.out.println("run futureTask !!!");
+					return 520L;
+				}
+			});
+			
+			taskExecutor.execute(futureTask);
+			
+			try {
+				Long long1 = futureTask.get();
+				System.out.println("get futureTask result :"+long1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 
 		
