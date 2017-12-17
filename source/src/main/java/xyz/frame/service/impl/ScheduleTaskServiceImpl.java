@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 import xyz.frame.pojo.common.TaskStateEnum;
 import xyz.frame.pojo.po.ScheduleTask;
 import xyz.frame.configure.schedule.QuartzTaskHelper;
+import xyz.frame.exception.ServiceException;
 import xyz.frame.mapper.ScheduleTaskMapper;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
-import xyz.frame.utils.ServiceException;
 
 @Service("scheduleTaskService")
 public class ScheduleTaskServiceImpl implements ScheduleTaskService {

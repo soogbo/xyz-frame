@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.utils.ServiceException;
+import xyz.frame.exception.ServiceException;
 
 /**
  * rocketmq消息服务实现类

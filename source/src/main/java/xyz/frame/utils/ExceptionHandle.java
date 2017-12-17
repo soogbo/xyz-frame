@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import xyz.frame.exception.ServiceException;
 import xyz.frame.pojo.common.ResultEnum;
 
 /**
