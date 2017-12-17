@@ -211,6 +211,10 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope><!-- 编译/测试 使用 -->
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
 		<!-- end web -->
 
 		<!-- lius.framework <dependency> <groupId>lius.framework</groupId> <artifactId>framework-parent</artifactId> 
