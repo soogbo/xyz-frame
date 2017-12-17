@@ -49,6 +49,7 @@ public class FrameJsonUtils {
      */
     public static String toJson(Object src){
         try {
+        	//使用objectMapper格式化date对象
             return JacksonFormatDate.objectMapper.writeValueAsString(src);
         } catch (JsonProcessingException e) {
             throw new FrameworkJsonException("json序列化失败", e);

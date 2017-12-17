@@ -25,10 +25,17 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/user/all")
-//    public ResponseResult<?> submitTestMqProducer() {
-    public String submitTestMqProducer() {
+    public ResponseResult<?> submitTestMqProducer() {
+//    public String userAll() {
         List<User> findAllUser = userService.findAllUser();
+        return RestResultUtil.success(findAllUser);
+//        return FrameJsonUtils.toJson(RestResultUtil.success(findAllUser));
+    }
+    @GetMapping(value = "/user/all/jsonString")
+//    public ResponseResult<?> submitTestMqProducer() {
+    public String userAllJsonString() {
+    	List<User> findAllUser = userService.findAllUser();
 //        return RestResultUtil.success(findAllUser);
-        return FrameJsonUtils.toJson(RestResultUtil.success(findAllUser));
+    	return FrameJsonUtils.toJson(RestResultUtil.success(findAllUser));
     }
 }

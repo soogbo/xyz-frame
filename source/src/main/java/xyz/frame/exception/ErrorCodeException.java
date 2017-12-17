@@ -1,4 +1,4 @@
-package xyz.frame.utils;
+package xyz.frame.exception;
 
 /**
  * 自定义异常错误码

@@ -34,6 +34,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -55,7 +56,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<!-- spring-context-support -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -73,6 +73,9 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- <dependency> <groupId>com.fasterxml.jackson.datatype</groupId> <artifactId>jackson-datatype-joda</artifactId> 
+			</dependency> -->
 
 		<!-- mysql -->
 		<dependency>
@@ -127,7 +130,7 @@
 			<artifactId>logback-core</artifactId>
 		</dependency>
 		<!-- end slf4j logback -->
-		
+
 		<!-- rocketmq -->
 		<dependency>
 			<groupId>org.apache.rocketmq</groupId>
@@ -157,7 +160,7 @@
 			</exclusions>
 		</dependency>
 		<!-- rocketmq end -->
-	
+
 		<!-- test -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -210,41 +213,18 @@
 		</dependency>
 		<!-- end web -->
 
-	<!-- lius.framework 
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-parent</artifactId>
-		<version>1.0.5.RELEASE</version>
-		<type>pom</type>
-	</dependency>
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-core</artifactId>
-		<version>1.0.5.RELEASE</version>
-	</dependency>
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-http</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-web</artifactId>
-		<version>1.0.5.RELEASE</version>
-	</dependency>
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-service</artifactId>
-		<version>1.0.5.RELEASE</version>
-	</dependency>
-	<dependency>
-		<groupId>lius.framework</groupId>
-		<artifactId>framework-dao</artifactId>
-		<version>1.0.5.RELEASE</version>
-	</dependency>
-lius.framework -->
+		<!-- lius.framework <dependency> <groupId>lius.framework</groupId> <artifactId>framework-parent</artifactId> 
+			<version>1.0.5.RELEASE</version> <type>pom</type> </dependency> <dependency> 
+			<groupId>lius.framework</groupId> <artifactId>framework-core</artifactId> 
+			<version>1.0.5.RELEASE</version> </dependency> <dependency> <groupId>lius.framework</groupId> 
+			<artifactId>framework-http</artifactId> <version>0.0.1-SNAPSHOT</version> 
+			</dependency> <dependency> <groupId>lius.framework</groupId> <artifactId>framework-web</artifactId> 
+			<version>1.0.5.RELEASE</version> </dependency> <dependency> <groupId>lius.framework</groupId> 
+			<artifactId>framework-service</artifactId> <version>1.0.5.RELEASE</version> 
+			</dependency> <dependency> <groupId>lius.framework</groupId> <artifactId>framework-dao</artifactId> 
+			<version>1.0.5.RELEASE</version> </dependency> lius.framework -->
 
-	<!-- 热部署模块 -->
+		<!-- 热部署模块 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -258,7 +238,7 @@ lius.framework -->
 	</dependencies>
 
 	<build>
-        <finalName>xyz-frame</finalName>
+		<finalName>xyz-frame</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -12,9 +12,9 @@ import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import xyz.frame.exception.ServiceException;
 import xyz.frame.pojo.common.ConfigKey;
 import xyz.frame.utils.ConfigurePropertiesIoStream;
-import xyz.frame.utils.ServiceException;
 
 /**
  * rocketmq消息客户端

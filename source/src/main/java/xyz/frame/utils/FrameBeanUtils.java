@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
+import xyz.frame.exception.ServiceException;
+
 /**
  * @Description 对象转换工具
  * @author shisp

@@ -1,4 +1,4 @@
-package xyz.frame.utils;
+package xyz.frame.exception;
 
 /**
  * 自定义抛出异常给前台。
