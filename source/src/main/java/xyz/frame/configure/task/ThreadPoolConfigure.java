@@ -41,8 +41,8 @@ public class ThreadPoolConfigure {
 	 * 导入和操作公用的线程池 
 	 * @return ThreadPoolTaskExecutor
 	 */
-	@Bean(name="importTaskExecutor")
-	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+//	@Bean(name="importTaskExecutor")
+//	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public ThreadPoolTaskExecutor getImportTaskExecutor(){
 		ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
 		pool.setCorePoolSize(20); // 最少线程数2	
@@ -60,8 +60,8 @@ public class ThreadPoolConfigure {
 	 * 短信功能的线程池
 	 * @return ThreadPoolTaskExecutor
 	 */
-	@Bean(name="smsManagerExecutor")
-	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+//	@Bean(name="smsManagerExecutor")
+//	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public ThreadPoolTaskExecutor getSmsManagerExecutor(){
 		ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
 		pool.setCorePoolSize(10); // 最少线程数2	
