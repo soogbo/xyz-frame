@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import xyz.frame.json.FrameJsonUtils;
 import xyz.frame.pojo.po.User;
 import xyz.frame.service.UserService;
 import xyz.frame.utils.ResponseResult;
@@ -24,8 +25,10 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(value = "/user/all")
-    public ResponseResult<?> submitTestMqProducer() {
+//    public ResponseResult<?> submitTestMqProducer() {
+    public String submitTestMqProducer() {
         List<User> findAllUser = userService.findAllUser();
-        return RestResultUtil.success(findAllUser);
+//        return RestResultUtil.success(findAllUser);
+        return FrameJsonUtils.toJson(RestResultUtil.success(findAllUser));
     }
 }
