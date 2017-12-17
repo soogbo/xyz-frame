@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.TypeReference;
 import xyz.frame.pojo.common.GroupTopicTagEnum;
-import xyz.frame.utils.FrameJsonUtils;
 import xyz.frame.configure.rocketmq.RocketMQMessageCallback;
 import xyz.frame.configure.rocketmq.RocketMQMessageConsumer;
 import xyz.frame.configure.rocketmq.RocketMQMessageService;
+import xyz.frame.json.FrameJsonUtils;
 
 /**
  * mqConsumer

@@ -19,7 +19,6 @@ import xyz.frame.service.TaskPoolService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=TestSpringApplication.class)
-//@Configuration
 public class TaskPoolServiceImplTest {
 
     /**
