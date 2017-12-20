@@ -1,0 +1,9 @@
+.index-topbar .title {
+    margin-top: 10px;
+    margin-left: 25px;
+    color: white;
+    font-size: xx-large;
+    letter-spacing: 12px;
+    font-family: Segoe UI, Verdana, sans-serif;
+    text-shadow: -3px 0 4px #000000;
+}

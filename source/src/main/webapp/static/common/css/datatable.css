@@ -1,0 +1,9 @@
+table.dataTable td {
+    vertical-align: middle !important;
+}
+
+table.dataTable th.center,
+table.dataTable td.center {
+    text-align: center;
+    vertical-align: middle;
+}

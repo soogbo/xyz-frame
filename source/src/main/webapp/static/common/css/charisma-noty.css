@@ -1,0 +1,39 @@
+/*charisma-noty 和官方的noty有很大的差不,注意使用*/
+
+.noty_confirm .noty_message {
+    padding: 0 !important;
+    min-width: 310px;
+}
+
+.noty_confirm .noty_text {
+    float: none !important;
+    display: block;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    padding: 10px;
+    width: auto;
+    position: relative;
+}
+
+.noty_confirm .noty_buttons {
+    float: none !important;
+    display: block;
+    padding: 5px;
+    margin: 0 !important;
+    text-align: right;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
+}
+
+.noty_confirm .noty_buttons button {
+    margin-left: 10px!important;
+    padding: 10px 20px;
+}
+
+.noty_confirm .noty_text {
+    font-size: 16px;
+    padding:18px;
+}

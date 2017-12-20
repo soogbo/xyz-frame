@@ -16,7 +16,7 @@ spring:
         GMT+8
   mvc:
     view:
-      prefix: /WEB-INF/jsp/
+      prefix: /WEB-INF/pages/
       suffix: .jsp
             
 #  jpa:

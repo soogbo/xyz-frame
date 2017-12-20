@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 定义http切面，对HTTP请求切入，进行日志记录
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class HttpAspect {
 
 	@Autowired

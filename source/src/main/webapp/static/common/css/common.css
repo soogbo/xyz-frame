@@ -1,0 +1,88 @@
+body,
+table {
+    font-size: 16px;
+}
+
+/*fix bug: 月视图时，十一月和十二月显示换行*/
+.datepicker-months .month {
+    font-size: 14px;
+}
+
+body {
+    font-family: "Microsoft Yahei", Tahoma, "SimSun";
+}
+
+.row-bottom {
+    margin-bottom: 20px;
+}
+
+.mg-t-10 {
+    margin-top: 10px;
+}
+
+.mg-t-20 {
+    margin-top: 20px;
+}
+
+.mg-b-0 {
+    margin-bottom: 0;
+}
+
+.mg-b-5 {
+    margin-bottom: 5px;
+}
+
+.mg-b-10 {
+    margin-bottom: 10px;
+}
+
+.mg-b-20 {
+    margin-bottom: 20px;
+}
+
+.asterisk {
+    font-size: 14px;
+    color: #f00;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.hr {
+    border-bottom: 1px solid #eee;
+}
+
+.thumbnail {
+    width: 100%;
+}
+
+.tooltip {
+    font-size: 15px;
+}
+
+.input-daterange .input-group-addon {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.input-daterange [readonly],
+.datepicker[readonly] {
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.word-break {
+
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+.word-nowrap {
+    white-space: nowrap;
+}
