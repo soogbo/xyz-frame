@@ -46,7 +46,16 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+	    //静态文件访问：
+	    //1.默认webapp下文件可以直接访问：127.0.0.1:8080/1.txt
+	    //2.默认classpath:static文件夹下(即src/main/resources/static/下)可直接访问：127.0.0.1:8080/1.txt
+	    // 1.2.可同时访问，相同路径同名文件，会访问到webapp下。
+	    super.addResourceHandlers(registry); //使用jsp时建议使用此方法在webapp下维护静态文件
+	    
+	    //3.重写此方法，可设置文件存放路径，与访问需添加的路径，此时webapp中文件不能访问。
+	    //  addResourceHandler：/aaa/(访问路径是：127.0.0.1:8080/aaa/1.txt或127.0.0.1:8080/1.txt)，一级目录下/aaa/1.txt或/1.txt都可，二级目录下必须/aaa/bbb/1.txt
+	    //  addResourceLocations：/bbb/(文件放在/bbb/下)
+//		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 	}
 
 	@Bean
