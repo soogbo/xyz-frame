@@ -14,10 +14,12 @@ spring:
         yyyy-MM-dd HH:mm:ss
       time-zone:
         GMT+8
-  mvc:
-    view:
-      prefix: /WEB-INF/pages/
-      suffix: .jsp
+
+#  class与yml均可配置，Class会覆盖xml
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/pages/
+#      suffix: .jsp
             
 #  jpa:
 #    hibernate:

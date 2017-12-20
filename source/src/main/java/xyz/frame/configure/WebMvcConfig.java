@@ -22,11 +22,10 @@
  * THE SOFTWARE.
  */
 
-package xyz.frame.configure.webmvc;
+package xyz.frame.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -38,7 +37,10 @@ import org.springframework.web.servlet.view.JstlView;
  * @author liuzh
  * @since 2015-12-19 16:16
  */
- @EnableWebMvc //启用mvc java config
+//@EnableWebMvc //启用mvc java config
+    //测试，开启此注解，Junit启动报错，不开启可正常使用
+    //class与yml均可进行配置，Class会覆盖xml
+
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
@@ -50,8 +52,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		// viewResolver.setPrefix("/WEB-INF/classes/views/");
-		viewResolver.setPrefix("/WEB-INF/jsp/");
+		viewResolver.setPrefix("/WEB-INF/pages/");
 		viewResolver.setSuffix(".jsp");
 		viewResolver.setViewClass(JstlView.class);
 		return viewResolver;

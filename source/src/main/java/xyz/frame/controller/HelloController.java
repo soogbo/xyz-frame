@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/test")
-//public class HelloJspController {
-public class HelloJspView {
+public class HelloController {
 
 	@RequestMapping("/helloJsp")
 	public String helloJsp(Model model) {
 		System.out.println("HelloJspController.helloJsp().hello");
+		model.addAttribute("msg", "hello,2018");
 		return "hello";
 	}
 
