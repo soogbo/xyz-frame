@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AccessController {
     private static final Logger logger = LoggerFactory.getLogger(AccessController.class);
+    private static final String INDEX = "index";
+    private static final String SPRIT = "/";
+    private static final String REDIRECT = "redirect:";
 
     @RequestMapping(value = "/{view1}", method = { RequestMethod.POST, RequestMethod.GET })
     public String view1Jsp(@PathVariable("view1") String view1, Model model) {
-        if (StringUtils.isBlank(view1))
-            view1 = "index";
+        if (!INDEX.equals(view1)) view1 = REDIRECT + SPRIT + view1 + SPRIT + INDEX;
         logger.info("come in view1:{}", view1);
         return view1;
     }
@@ -29,11 +31,11 @@ public class AccessController {
     @RequestMapping(value = "/{view1}/{view2}", method = { RequestMethod.POST, RequestMethod.GET })
     public String view12Jsp(@PathVariable("view1") String view1, @PathVariable("view2") String view2, Model model) {
         if (StringUtils.isBlank(view2))
-            view2 = "index";
+            view2 = INDEX;
         logger.info("come in view1/view2:{}/{}", view1, view2);
         if (StringUtils.isBlank(view1))
             return view2;
-        return view1 + "/" + view2;
+        return view1 + SPRIT + view2;
     }
 
 }
