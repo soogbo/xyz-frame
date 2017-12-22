@@ -1,21 +1,24 @@
 package xyz.frame.service.impl;
 
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.pojo.common.TaskStateEnum;
-import xyz.frame.pojo.po.ScheduleTask;
 import xyz.frame.configure.schedule.QuartzTaskHelper;
 import xyz.frame.exception.ServiceException;
 import xyz.frame.mapper.ScheduleTaskMapper;
+import xyz.frame.pojo.common.TaskStateEnum;
+import xyz.frame.pojo.po.ScheduleTask;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
 import xyz.frame.service.schedule.ScheduleTaskService;
 
@@ -246,4 +249,28 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         return false;
     }
 
+    @Override
+    public void doExecuteJob(Job executeJob, JobExecutionContext context, Object service) {
+        // 记录Job执行状态和时间
+        String classSimpleName = executeJob.getClass().getSimpleName();
+        ScheduleTaskVo scheduleTaskVo = (ScheduleTaskVo) context.getJobDetail().getJobDataMap().get(executeJob.getClass().getCanonicalName());
+        scheduleTaskVo.setStatus(TaskStateEnum.RUNNING.name());
+        this.saveOrUpdateTask(scheduleTaskVo);
+        try {
+            logger.info("begin " + classSimpleName);
+            Method[] methods = service.getClass().getMethods();
+            for (Method method : methods) {
+                if (method.getName().startsWith("executeJob")) {
+                    method.invoke(service);
+                }
+            }
+            logger.info("end " + classSimpleName);
+            scheduleTaskVo.setStatus(TaskStateEnum.NORMAL.name());
+        } catch (Exception e) {
+            scheduleTaskVo.setStatus(TaskStateEnum.ERROR.name());
+            logger.error("execute " + classSimpleName + " failed", e);
+        } finally {
+            this.saveOrUpdateTask(scheduleTaskVo);
+        }
+    }
 }

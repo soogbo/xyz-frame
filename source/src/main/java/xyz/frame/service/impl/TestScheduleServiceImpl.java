@@ -21,7 +21,7 @@ public class TestScheduleServiceImpl implements TestScheduleService {
     private TaskPoolService taskPoolService;
     
     @Override
-    public void execute() {
+    public void executeJob() {
         taskPoolService.testTaskPool();
     }
 

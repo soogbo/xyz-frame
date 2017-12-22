@@ -3,6 +3,9 @@ package xyz.frame.service.schedule;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+
 import xyz.frame.pojo.common.TaskStateEnum;
 import xyz.frame.pojo.po.ScheduleTask;
 import xyz.frame.pojo.vo.ScheduleTaskVo;
@@ -81,5 +84,14 @@ public interface ScheduleTaskService {
      * @param taskId 任务id
      */
     public Boolean runOnceTask(@NotNull(message="1|参数taskId不能为空")Long taskId);
+    
+    /**
+     * 执行service.executeJob*();要求参数service任务方法名必须是以 executeJob开头
+     * 
+     * @param executeJob
+     * @param context
+     * @param service
+     */
+    public void doExecuteJob(Job executeJob, JobExecutionContext context, Object service);
 
 }

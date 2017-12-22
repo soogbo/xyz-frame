@@ -13,6 +13,6 @@ public interface TestScheduleService {
     /**
      * 执行器
      */
-    void execute();
+    void executeJob();
 
 }
