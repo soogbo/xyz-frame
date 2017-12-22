@@ -242,7 +242,8 @@
 	</dependencies>
 
 	<build>
-		<finalName>xyz-frame</finalName>
+<!-- 		<finalName>xyz-frame</finalName> -->
+		<finalName></finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
