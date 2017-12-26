@@ -1,4 +1,4 @@
-package ${parameters.orgName}.${parameters.projectName}.<#if parameters.moduleName?has_content>${parameters.moduleName}.</#if>entity;
+package ${parameters.orgName}.${parameters.projectName}.<#if parameters.moduleName?has_content>${parameters.moduleName}.</#if>pojo.po;
 
 import java.io.Serializable;
 import javax.persistence.Column;

@@ -23,6 +23,7 @@
 		3.Po：表对应实体类，
 		4.Vo：web展示/业务使用类，
 		5.Bo：接收web参数类
+	5.任务job根据demo编写，TestScheduleServiceImpl.executeJob()，每个job只有一个入口executeJob()；
 
 已有功能：
 01.统一异常管理
