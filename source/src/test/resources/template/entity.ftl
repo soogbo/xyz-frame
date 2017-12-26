@@ -16,9 +16,9 @@ import javax.persistence.GenerationType;
 public class ${parameters.entity} implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final String TABLE_NAME = "${parameters.tableVO.tableName}";
-    public static final String COLUMN_LIST = "<#list parameters.columnList as pv>${pv.convertColumnName}<#if pv_has_next>,</#if></#list>";
-    public static final String COLUMN_LIST_ALIAS_T = "<#list parameters.columnList as pv>t.${pv.convertColumnName}<#if pv_has_next>,</#if></#list>";        
+    public static final String TABLE_NAME = " ${parameters.tableVO.tableName} ";
+    public static final String COLUMN_LIST = " <#list parameters.columnList as pv>${pv.convertColumnName}<#if pv_has_next>,</#if></#list> ";
+    public static final String COLUMN_LIST_ALIAS_T = " <#list parameters.columnList as pv>t.${pv.convertColumnName}<#if pv_has_next>,</#if></#list> ";        
     <#list parameters.columnList as pv>
     
     /**
