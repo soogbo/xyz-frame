@@ -262,6 +262,7 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
             for (Method method : methods) {
                 if (method.getName().startsWith("executeJob")) {
                     method.invoke(service);
+                    break;
                 }
             }
             logger.info("end " + classSimpleName);
