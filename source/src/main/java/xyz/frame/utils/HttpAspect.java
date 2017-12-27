@@ -26,67 +26,60 @@ import xyz.frame.json.FrameJsonUtils;
 @Component
 public class HttpAspect {
 
-	@Autowired
-	private ExceptionHandle exceptionHandle;
+    @Autowired
+    private ExceptionHandle exceptionHandle;
 
-	private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
+    private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
-	// 切点，所有http请求的controller
-	@Pointcut("execution(public * xyz.frame.controller..*.*(..))")
-	public void log() {
-	}
+    // 切点，所有http请求的controller
+    @Pointcut("execution(public * xyz.frame.controller..*.*(..))")
+    public void log() {
+    }
 
-	@Before("log()")
-	public void doBefore(JoinPoint joinPoint) {
-		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		HttpServletRequest request = attributes.getRequest();
+    @Before("log()")
+    public void doBefore(JoinPoint joinPoint) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
 
-		// url
-		logger.info("url={}", request.getRequestURL());
+        // url
+        logger.info("url={}", request.getRequestURL());
 
-		// method
-		logger.info("method={}", request.getMethod());
+        // method
+        logger.info("method={}", request.getMethod());
 
-		// ip
-		logger.info("ip={}", request.getRemoteAddr());
+        // ip
+        logger.info("ip={}", request.getRemoteAddr());
 
-		// 类方法
-		logger.info("class_method={}",
-				joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        // 类方法
+        logger.info("class_method={}",
+                joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
 
-		// 参数
-		logger.info("args={}", joinPoint.getArgs());
-		
-		//使用线程变量即时
-		Profiler.begin();
-	}
+        // 参数
+        logger.info("args={}", joinPoint.getArgs());
 
-	@SuppressWarnings("unused")
-	@Around("log()")
-	public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-		ResponseResult<?> result = null;
-		try {
+        // 使用线程变量即时
+        Profiler.begin();
+    }
 
-		} catch (Exception e) {
-			return exceptionHandle.handle(e);
-		}
-		if (result == null) {
-			return proceedingJoinPoint.proceed();
-		}
+    @Around("log()")
+    public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        try {
+            return proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            return exceptionHandle.handle(e);
+        }
+    }
 
-		return result;
-	}
+    @After("log()")
+    public void doAfter() {
+        logger.info("aop doAfter");
+    }
 
-	@After("log()")
-	public void doAfter() {
-		logger.info("aop doAfter");
-	}
-
-	@AfterReturning(returning = "object", pointcut = "log()")
-	public void doAfterReturning(Object object) {
-		logger.info("response={}", FrameJsonUtils.toJson(object));
-		//使用线程变量即时
-		logger.info("time cost={}", Profiler.end()/1000+" 秒");
-	}
+    @AfterReturning(returning = "object", pointcut = "log()")
+    public void doAfterReturning(Object object) {
+        logger.info("response={}", FrameJsonUtils.toJson(object));
+        // 使用线程变量即时
+        logger.info("time cost={}", Profiler.end() / 1000 + " 秒");
+    }
 
 }
