@@ -86,9 +86,8 @@ public interface ScheduleTaskService {
     public Boolean runOnceTask(@NotNull(message="1|参数taskId不能为空")Long taskId);
     
     /**
-     * 执行service.executeJob*();
-     *  要求参数service要执行的任务方法名规范：executeJob*();
-     *  以executeJob开始，无参，只有一个；
+     * 执行service.executeJob();
+     *  要求参数service要执行的任务方法名规范：executeJob();
      * 
      * @param executeJob
      * @param context

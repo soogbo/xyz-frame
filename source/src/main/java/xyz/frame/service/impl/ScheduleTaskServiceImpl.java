@@ -1,11 +1,11 @@
 package xyz.frame.service.impl;
 
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.reflect.MethodUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
@@ -25,7 +25,7 @@ import xyz.frame.service.schedule.ScheduleTaskService;
 @Service("scheduleTaskService")
 public class ScheduleTaskServiceImpl implements ScheduleTaskService {
     private static final Logger logger = LoggerFactory.getLogger(ScheduleTaskServiceImpl.class);
-    
+    private static final String EXECUTE_JOB = "executeJob";
     private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
@@ -258,13 +258,14 @@ public class ScheduleTaskServiceImpl implements ScheduleTaskService {
         this.saveOrUpdateTask(scheduleTaskVo);
         try {
             logger.info("begin " + classSimpleName);
-            Method[] methods = service.getClass().getMethods();
+            MethodUtils.invokeMethod(service, EXECUTE_JOB);
+            /*Method[] methods = service.getClass().getMethods();
             for (Method method : methods) {
                 if (method.getName().startsWith("executeJob")) {
                     method.invoke(service);
                     break;
                 }
-            }
+            }*/
             logger.info("end " + classSimpleName);
             scheduleTaskVo.setStatus(TaskStateEnum.NORMAL.name());
         } catch (Exception e) {
