@@ -12,6 +12,21 @@
 	1.阿里Java开发规范
 	2.java doc规范
 	3.mapper查询结果使用Po Vo接收，不使用Map
+-----------------
+　A) Service/DAO 层方法命名规约
+
+　　　　1） 获取单个对象的方法用 get 做前缀。
+
+　　　　2） 获取多个对象的方法用 list 做前缀。
+
+　　　　3） 获取统计值的方法用 count 做前缀。
+
+　　　　4） 插入的方法用 save（推荐）或 insert 做前缀。
+
+　　　　5） 删除的方法用 remove（推荐）或 delete 做前缀。
+
+　　　　6） 修改的方法用 update 做前缀。
+-----------------
 	
 	规范：
 	1.所有类添加注释/** */
@@ -24,6 +39,7 @@
 		4.Vo：web展示/业务使用类，
 		5.Bo：接收web参数类
 	5.任务job根据demo编写，TestScheduleServiceImpl.executeJob()，每个job只有一个入口executeJob()；
+	6.测试代码放在 src/test/java xyz.frame.main包下
 
 已有功能：
 01.统一异常管理
@@ -37,7 +53,7 @@
 08.（20171214）单元测试案例demo
 09.（20171214）mybatis自动生成mapper和entity
 10.静态资源访问
-11.
+11.job demo
 12.
 
 计划添加功能：
@@ -50,7 +66,7 @@
 7.
 8.
 9.上传下载demo
-10.job demo
+10.
 11.httpclient
 12.bootstrap web
 13.日志管理

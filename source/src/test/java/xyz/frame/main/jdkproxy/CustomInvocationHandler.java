@@ -1,4 +1,4 @@
-package xyz.frame.demo.jdkproxy;
+package xyz.frame.main.jdkproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

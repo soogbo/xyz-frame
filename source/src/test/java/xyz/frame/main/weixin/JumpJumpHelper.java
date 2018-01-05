@@ -1,4 +1,4 @@
-package xyz.frame.main.demo;
+package xyz.frame.main.weixin;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;

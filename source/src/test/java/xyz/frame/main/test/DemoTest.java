@@ -1,4 +1,4 @@
-package xyz.frame.demo.test;
+package xyz.frame.main.test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
