@@ -1,4 +1,9 @@
+# adb命令
 adb kill-server
 adb start-server
 adb devices
 adb shell
+
+# 工具文件(4个)放置位置
+C:\Windows\SysWOW64\
+C:\Windows\system32\
