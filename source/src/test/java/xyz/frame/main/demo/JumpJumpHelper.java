@@ -1,4 +1,4 @@
-package xyz.frame.demo;
+package xyz.frame.main.demo;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
