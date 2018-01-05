@@ -260,7 +260,7 @@ public class JumpJumpHelper {
 			// 执行次数
 			int executeCount = 0;
 			for (;;) {
-			    Thread.sleep(3000);
+//			    Thread.sleep(300);
 				// 执行ADB命令，获取安卓截屏
 				jumpjumpHelper.executeADBCaptureCommands();
 				File currentImage = new File(STORE_DIR, IMAGE_NAME);
