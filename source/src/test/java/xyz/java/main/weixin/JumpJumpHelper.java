@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -289,9 +290,22 @@ public class JumpJumpHelper {
 						"halmaX: " + halmaX + ", halmaY: " + halmaY + ", boardX: " + boardX + ", boardY: " + boardY);
 				// 计算跳跃的距离
 				double jumpDistance = jumpjumpHelper.computeJumpDistance(halmaX, halmaY, boardX, boardY);
-				jumpjumpHelper.doJump(jumpDistance);
-				// 每次停留2.5秒
-				TimeUnit.MILLISECONDS.sleep(2500);
+				
+//				int randNumber =rand.nextInt(MAX - MIN + 1) + MIN; // randNumber 将被赋值为一个 MIN 和 MAX 范围内的随机数
+				
+				// 生成跳跃左右距离偏差，防刷分校验
+				int x = new Random().nextInt(61) - 30;
+				if (x>-10 && x<8) {
+					x = 8 + new Random().nextInt(8-x);
+				}
+				jumpjumpHelper.doJump(jumpDistance+x);
+				
+				System.out.println("随机跳跃中心偏差："+ x +"像素。");
+				// 生成随机停留时间，防刷分校验
+				int y = new Random().nextInt(2500);
+				System.out.println("随机停留时间："+ y/1000D +"s。");
+				// 每次停留y/1000秒
+				TimeUnit.MILLISECONDS.sleep(y);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
