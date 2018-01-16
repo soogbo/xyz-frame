@@ -230,6 +230,14 @@
 		</dependency>
 		<!-- end web -->
 
+		<!-- ali大鱼 -->
+		<dependency>
+			<groupId>com.alidayu</groupId>
+			<artifactId>alidayu</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!-- ali大鱼 -->
+
 		<!-- lius.framework <dependency> <groupId>lius.framework</groupId> <artifactId>framework-parent</artifactId> 
 			<version>1.0.5.RELEASE</version> <type>pom</type> </dependency> <dependency> 
 			<groupId>lius.framework</groupId> <artifactId>framework-core</artifactId> 
