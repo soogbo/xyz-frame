@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import junit.framework.Assert;
 import xyz.frame.TestSpringApplication;
 import xyz.frame.service.TaskPoolService;
 
@@ -31,6 +32,8 @@ public class TaskPoolServiceImplTest {
     @Test
     public void testTestTaskPool() {
         taskPoolService.testTaskPool();
+        
+//        Assert.assertEquals(null, null); //junit 测试比较输出结果
     }
 
 }
