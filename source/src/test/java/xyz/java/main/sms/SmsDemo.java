@@ -12,10 +12,13 @@ public class SmsDemo {
 
     	AliSmsSentParamVo vo = new AliSmsSentParamVo();
     	vo.setExtend("ceshi123");
-    	vo.setRecNum("18521000092");
-    	vo.setSmsFreeSignName(AliSmsFreeSignNameEnum.soogbo测试.getName());
-    	vo.setSmsParamString("{\"name\":\"1234\",\"time\":\"alidayu\"}");
-    	vo.setSmsTemplateCode(AliSmsFreeSignNameEnum.SMS_64190036.getName());
+//    	vo.setRecNum("18521000092");
+    	vo.setRecNum("18521000092,15290071816,15839498697");
+    	vo.setSmsFreeSignName(AliSmsFreeSignNameEnum.石保华种子站.getName());
+    	vo.setSmsTemplateCode(AliSmsFreeSignNameEnum.SMS_122055063.getName());
+    	
+//    	vo.setSmsParamString("{\"name\":\"1234\",\"time\":\"alidayu\"}");
+    	vo.setSmsParamString("{\"seed\":\"迪卡653玉米种\",\"num\":\"1900\",\"phone\":\"15290071816\",\"adds\":\"陈寨中学路口西20米路北\"}");
     	vo.setSmsType("smstype");
     	
     	
