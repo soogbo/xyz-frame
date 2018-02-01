@@ -230,7 +230,7 @@
 		</dependency>
 		<!-- end web -->
 
-		<!-- ali大鱼 -->
+		<!-- ali大鱼 需手动安装依赖至本地maven库 -->
 		<dependency>
 			<groupId>com.alidayu</groupId>
 			<artifactId>alidayu</artifactId>
