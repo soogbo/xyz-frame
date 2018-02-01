@@ -4,6 +4,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.annotation.Resource;
 
@@ -53,6 +55,14 @@ public class TaskPoolServiceImpl implements TaskPoolService {
 				logger.info("方式3：submit执行：now thread name={}", currentThread.getName());
 				return "方式3：submit执行：now thread name={}"+currentThread.getName();
 			});
+			
+			try {
+                future.get(2, TimeUnit.HOURS);
+            } catch (InterruptedException e1) {
+            } catch (ExecutionException e1) {
+            } catch (TimeoutException e1) {
+            }
+			
 			System.out.println(future);
 
 			// 方式4 ：执行Future任务获取异步计算结果
