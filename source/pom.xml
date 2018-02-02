@@ -218,6 +218,21 @@
 		</dependency>
 		<!--end Commons -->
 		
+		<!-- pinyin util -->
+		<dependency>
+            <groupId>com.pinyin4j</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+		<!--end pinyin util -->
+		
+		<!-- begin redis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>          
+        </dependency>
+        <!-- end redis -->
+        
 		<!-- begin web -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
