@@ -216,7 +216,14 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
 		</dependency>
-		<!--end Commons -->
+		
+		<!-- jcraft for sftp-->
+		<dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.49</version>
+        </dependency>
+		<!--end jcraft -->
 		
 		<!-- begin web -->
 		<dependency>
@@ -237,6 +244,20 @@
 			<version>1.0</version>
 		</dependency>
 		<!-- ali大鱼 -->
+		
+		    <!-- swaggerUI -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+		    <!-- end swaggerUI -->
 
 		<!-- lius.framework <dependency> <groupId>lius.framework</groupId> <artifactId>framework-parent</artifactId> 
 			<version>1.0.5.RELEASE</version> <type>pom</type> </dependency> <dependency> 
