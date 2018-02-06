@@ -1,4 +1,4 @@
-package xyz.frame.configure.ftp;
+package xyz.frame.service.impl;
 
 import java.io.ByteArrayOutputStream;
 
@@ -7,16 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import xyz.frame.configure.ftp.FtpManager;
+import xyz.frame.configure.ftp.FtpParamService;
+import xyz.frame.configure.ftp.FtpUtil;
 import xyz.frame.mapper.FtpParamMapper;
 import xyz.frame.pojo.po.FtpParam;
 
-
-/**
- * Created by zuoyx on 2016/8/31.
- */
-@Service
+@Service("ftpParamService")
 public class FtpParamServiceImpl implements FtpParamService {
-    @SuppressWarnings("unused")
     private Logger logger = LoggerFactory.getLogger(FtpParamServiceImpl.class);
 
     @Autowired
@@ -24,14 +22,14 @@ public class FtpParamServiceImpl implements FtpParamService {
 
     @Override
     public FtpUtil getFtpById(Long ftpId) {
+        logger.info("get ftpUtil to conn...");
         FtpParam ftpParam = ftpParamMapper.selectByPrimaryKey(ftpId);
-        return FtpManager.getFtp(ftpParam.getType(), ftpParam.getHost(), ftpParam.getPort(),
-                ftpParam.getUsername(), ftpParam.getPassword(), ftpParam.getRoot());
+        return FtpManager.getFtp(ftpParam.getType(), ftpParam.getHost(), ftpParam.getPort(), ftpParam.getUsername(), ftpParam.getPassword(),
+                ftpParam.getRoot());
     }
 
-    
     @SuppressWarnings("finally")
-	@Override
+    @Override
     public ByteArrayOutputStream downloadFileFromFtp(FtpUtil ftpClient, String remotePath, String remoteFileName, String localFileName) {
         ByteArrayOutputStream out = null;
         try {
@@ -45,7 +43,7 @@ public class FtpParamServiceImpl implements FtpParamService {
     }
 
     @SuppressWarnings("finally")
-	@Override
+    @Override
     public Boolean removeFile(FtpUtil ftpClient, String remotePath, String remoteFileName) {
         Boolean success = false;
         try {

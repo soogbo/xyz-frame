@@ -1,6 +1,5 @@
 package xyz.frame.configure.ftp;
 
-
 public class FtpManager {
 
     private static final int FTP = 1;

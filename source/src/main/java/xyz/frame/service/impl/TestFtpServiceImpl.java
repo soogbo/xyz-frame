@@ -22,10 +22,11 @@ public class TestFtpServiceImpl implements TestFtpService {
         FtpUtil ftpUtil = null;
         try {
             ftpUtil = ftpParamService.getFtpById(ftpId);
+            if(null==ftpUtil) return flag;
             ftpUtil.ftpLogin();
             // 获取文件路径
-            String filePath = "ws/20180205/payoff/";
-            String fileName = "payoff.txt";
+            String filePath = "ws/20180206/payoff/";
+            String fileName = "payoff_1.txt";
             // 判断文件是否存在
             flag = ftpUtil.isFileExist(filePath, fileName);
         } catch (Exception ex) {

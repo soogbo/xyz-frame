@@ -26,7 +26,7 @@ public class FtpParam implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     
     /**
      * 连接地址
@@ -80,7 +80,7 @@ public class FtpParam implements Serializable {
 	 * 设置FTP服务ID
 	 * @param id FTP服务ID
 	 */    
-    public void setId(Integer id){
+    public void setId(Long id){
         this.id = id;
     }
     
@@ -88,7 +88,7 @@ public class FtpParam implements Serializable {
 	 * 获取FTP服务ID
 	 * @return id
 	 */    
-    public Integer getId(){
+    public Long getId(){
         return this.id;
     }    
     
