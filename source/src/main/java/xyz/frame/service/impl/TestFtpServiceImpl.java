@@ -1,5 +1,11 @@
 package xyz.frame.service.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,14 +51,63 @@ public class TestFtpServiceImpl implements TestFtpService {
         return flag;
     }
 
+    @SuppressWarnings("finally")
     @Override
-    public void testFtpUpload() {
-
+    public Boolean testFtpUpload(Long ftpId,String uploadPath,String fileName,InputStream in) {
+        FtpUtil upFtp = null;
+        Boolean status = false;
+        if (null==in) return status;
+        try {
+            upFtp = ftpParamService.getFtpById(ftpId);
+            upFtp.ftpLogin();
+            if (upFtp.uploadFile(in, uploadPath, fileName)) {
+                status = true;
+                logger.info("文件上传FTP success!!!");
+            }
+        } catch (Exception e) {
+            logger.error("文件上传FTP失败:{}", e.getMessage(), e);
+        } finally {
+            if (upFtp != null) {
+                try{ 
+                    upFtp.ftpLogOut();
+                }catch(Exception e) {
+                    logger.error("ftp关闭失败");
+                }
+            } 
+            return status;
+        }
     }
 
     @Override
-    public void testFtpDownload() {
-
+    public File testFtpDownload(Long ftpId,String uploadPath,String fileName) {
+        FtpUtil ftpUtil = null;
+        try{
+            ftpUtil = ftpParamService.getFtpById(ftpId);
+            ftpUtil.ftpLogin();
+            // 获取文件路径           
+            InputStream ftpInputStream = ftpUtil.downloadFileInputStream2(uploadPath, fileName);                
+            if (ftpInputStream != null) {
+                //创建临时文件
+                File txtFile = File.createTempFile("download_", ".txt");
+                OutputStream output = new FileOutputStream(txtFile);
+                //下载到临时文件
+                IOUtils.copy(ftpInputStream, output);
+                output.close();
+                ftpInputStream.close();
+                return txtFile;
+            } 
+        }catch (Exception ex) {
+            logger.error(ex.getMessage(), ex);
+        }finally {
+            if (ftpUtil != null) {
+                try{ 
+                    ftpUtil.ftpLogOut();
+                }catch(Exception e) {
+                    logger.error("ftp关闭失败");
+                }
+            }            
+        }
+        return null;
     }
 
 }

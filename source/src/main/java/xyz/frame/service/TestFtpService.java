@@ -3,6 +3,8 @@
  */
 package xyz.frame.service;
 
+import java.io.File;
+import java.io.InputStream;
 
 /**
  * 测试ftp链接
@@ -13,7 +15,7 @@ public interface TestFtpService {
 
     Boolean testFtpConn(Long ftpId);
     
-    void testFtpUpload();
+    Boolean testFtpUpload(Long ftpId,String uploadPath,String fileName,InputStream in);
     
-    void testFtpDownload();
+    File testFtpDownload(Long ftpId,String uploadPath,String fileName);
 }

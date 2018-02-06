@@ -1,11 +1,15 @@
 package xyz.frame.service.impl;
 
-import static org.junit.Assert.fail;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import xyz.frame.AbstractTest;
+import xyz.frame.json.FrameJsonUtils;
 import xyz.frame.service.TestFtpService;
 
 public class TestFtpServiceImplTest extends AbstractTest {
@@ -21,12 +25,20 @@ public class TestFtpServiceImplTest extends AbstractTest {
 
     @Test
     public void testTestFtpUpload() {
-        fail("Not yet implemented");
+        InputStream in = null;
+        try {
+            in = new FileInputStream("C:\\Windows\\system.ini");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Boolean isUpload = testFtpService.testFtpUpload(1L, "ws/20180206/", "system.ini", in);
+        System.out.println(isUpload);
     }
 
     @Test
     public void testTestFtpDownload() {
-        fail("Not yet implemented");
+        File file = testFtpService.testFtpDownload(1L, "ws/20180206/payoff/", "payoff_1.txt");
+        System.out.println(FrameJsonUtils.toJson(file.length()));
     }
 
 }
