@@ -26,6 +26,7 @@
 　　　　5） 删除的方法用 remove（推荐）或 delete 做前缀。
 
 　　　　6） 修改的方法用 update 做前缀。
+
 -----------------
 	
 	规范：
@@ -42,27 +43,28 @@
 	6.测试代码放在 src/test/java xyz.frame.main包下
 
 已有功能：
-01.统一异常管理
-02.controller aspect管理
-02.rocketmq集成demo
-03.druid连接池配置
-04.集成quartz并数据库配置job
-05.u_user demo
-06.mybatis集成通用mapper and pagehelp
-07.（20171214）线程池demo
-08.（20171214）单元测试案例demo
-09.（20171214）mybatis自动生成mapper和entity
-10.静态资源访问
-11.job demo
-12.swarggerUi集成demo
-13.ftp连接demo
-14.param_class 配置
-15.httpclient
-16.jdkproxy demo
-17.大鱼sms发送demo
-18.微信挑一挑tool
-19.
+1.统一异常管理
+2.controller aspect管理
+3.rocketmq集成demo
+4.druid连接池配置
+5.集成quartz并数据库配置job
+6.u_user demo
+7.mybatis集成通用mapper and pagehelp
+8.（20171214）线程池demo
+9.（20171214）单元测试案例demo
+10.（20171214）mybatis自动生成mapper和entity
+11.静态资源访问
+12.job demo
+13.swarggerUi集成demo
+14.ftp连接demo
+15.param_class 配置
+16.httpclient
+17.jdkproxy demo
+18.大鱼sms发送demo
+19.微信挑一挑tool
+20.
 
+-------------------
 计划添加功能：
 1.redis连接
 2.mongo连接

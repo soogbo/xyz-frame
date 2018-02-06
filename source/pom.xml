@@ -218,6 +218,14 @@
 		</dependency>
 		<!--end Commons -->
 		
+		<!-- jcraft for sftp-->
+		<dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.49</version>
+        </dependency>
+		<!--end jcraft -->
+		
 		<!-- begin web -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

@@ -69,7 +69,7 @@ public class TestGenerator{
 		for(String k:config.keySet()){
 			genSource(k,tableSchema,config.get(k),moduleName);
 		}*/
-		genSource("ParamClass", "xyz_frame", "param_class", "");
+		genSource("FtpParam", "xyz_frame", "s_ftp_param", "");
 	}
 
 }
