@@ -54,7 +54,14 @@
 09.（20171214）mybatis自动生成mapper和entity
 10.静态资源访问
 11.job demo
-12.
+12.swarggerUi集成demo
+13.ftp连接demo
+14.param_class 配置
+15.httpclient
+16.jdkproxy demo
+17.大鱼sms发送demo
+18.微信挑一挑tool
+19.
 
 计划添加功能：
 1.redis连接
@@ -67,13 +74,13 @@
 8.
 9.上传下载demo
 10.
-11.httpclient
+11.
 12.bootstrap web
 13.日志管理
 14.缓存添加 ehcache redis
 15.java 邮件发送
 16.集成webmagic
-17.param_class 配置
-18.分环境自动编译配置文件
+17.
+18.分环境自动编译配置文件config
 19.mvc-config配置(拦截器，视图解析器等)
 20.
