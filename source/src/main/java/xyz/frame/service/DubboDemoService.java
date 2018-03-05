@@ -10,6 +10,6 @@ public interface DubboDemoService {
 
     String providerService(String classCode);
 
-    String consumerService(String classCode);
+    String toConsumerService(String classCode);
 
 }

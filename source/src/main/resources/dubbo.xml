@@ -11,15 +11,19 @@
 	<dubbo:application name="com.daikuan.collection.provider" />
 	
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol name="@dubbo.protocol.name@" port="@dubbo.protocol.port@" />
+<!-- 	<dubbo:protocol name="@dubbo.protocol.name@" port="@dubbo.protocol.port@" /> -->
 	
 	<!-- 使用zookeeper注册中心进行注册 -->
-	<dubbo:registry protocol="zookeeper" address="@dubbo.registry.address@" client="curator"/>
+<!-- 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" client="curator"/> -->
+	<dubbo:registry protocol="zookeeper" address="zookeeper://172.16.0.140:2181" client="curator"/>
 	
 	<!-- provider全局配置 -->
 	<dubbo:provider retries="2" timeout="20000" loadbalance="leastactive" />
 
 	<!-- 通过dubbo发布服务  -->
-	<import resource="provider-for-dubbo.xml"/>
-	<import resource="consumer-for-dubbo.xml"/>
+<!-- 	<import resource="provider-for-dubbo.xml"/> -->
+<!-- 	<import resource="consumer-for-dubbo.xml"/> -->
+
+    <dubbo:reference id="billApiService" interface="com.daikuan.collection.productcore.service.BillApiService" />  
+
 </beans>
