@@ -43,7 +43,7 @@ import org.springframework.web.servlet.view.JstlView;
     //测试，开启此注解，Junit启动报错，不开启可正常使用
     //class与yml均可进行配置，Class会覆盖xml
 
-@Configuration
+// @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -57,7 +57,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	    //3.重写此方法，可设置文件存放路径，与访问需添加的路径，此时webapp中文件不能访问。
 	    //  addResourceHandler：/aaa/(访问路径是：127.0.0.1:8080/aaa/1.txt或127.0.0.1:8080/1.txt)，一级目录下/aaa/1.txt或/1.txt都可，二级目录下必须/aaa/bbb/1.txt
 	    //  addResourceLocations：/bbb/(文件放在/bbb/下)
-//		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+		//  registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 	}
 
 	@Bean
