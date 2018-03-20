@@ -69,7 +69,12 @@ public class TestGenerator{
 		for(String k:config.keySet()){
 			genSource(k,tableSchema,config.get(k),moduleName);
 		}*/
-		genSource("FtpParam", "xyz_frame", "s_ftp_param", "");
+		genSource("Category", "xyz_frame", "category", "mrshi");
+		genSource("Customer", "xyz_frame", "customer", "mrshi");
+		genSource("Goods", "xyz_frame", "goods", "mrshi");
+		genSource("Order", "xyz_frame", "order", "mrshi");
+		genSource("OrderGoods", "xyz_frame", "order_goods", "mrshi");
+		genSource("Supplier", "xyz_frame", "supplier", "mrshi");
 	}
 
 }

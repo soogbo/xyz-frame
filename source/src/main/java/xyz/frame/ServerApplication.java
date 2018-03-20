@@ -11,7 +11,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author shisp
  * @date 2017年11月27日 下午2:28:20
  */
-@MapperScan(basePackages = "xyz.frame.mapper")
+@MapperScan(basePackages = {"xyz.frame.mapper","xyz.frame.mrshi.mapper"})
 @SpringBootApplication
 public class ServerApplication extends SpringBootServletInitializer {
 

@@ -1,5 +1,7 @@
 package xyz.frame.exception;
 
+import xyz.frame.pojo.common.SystemErrorCodeEnum;
+
 /**
  * 自定义抛出异常给前台。
  *
@@ -26,24 +28,25 @@ public class ServiceException extends RuntimeException {
 		this.errorCode = errorCode;
 		this.errorMsg = errorMsg;
 	}
+	public ServiceException(SystemErrorCodeEnum systemErrorCodeEnum) {
+	    this.errorCode = systemErrorCodeEnum.getErrorCode();
+	    this.errorMsg = systemErrorCodeEnum.getErrorMsg();
+	}
 
 	@Override
 	public String getMessage() {
 		return "错误码:" + errorCode + ",错误描述:" + errorMsg;
 	}
-
+	
 	public int getErrorCode() {
 		return errorCode;
 	}
-
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
-
 	public String getErrorMsg() {
 		return errorMsg;
 	}
-
 	public void setErrorMsg(String errorMsg) {
 		this.errorMsg = errorMsg;
 	}
