@@ -1,5 +1,9 @@
 package xyz.frame.mrshi.service;
 
+import java.util.List;
+
+import xyz.frame.mrshi.pojo.po.Customer;
+
 /**
  * 客户service
  * 
@@ -8,4 +12,11 @@ package xyz.frame.mrshi.service;
  */
 public interface CustomerService {
 
+    List<Customer> listAll();
+
+    Customer saveOrUpdate(Customer customer);
+
+    Customer selectById(Long id);
+
+    int deleteById(Long id);
 }
