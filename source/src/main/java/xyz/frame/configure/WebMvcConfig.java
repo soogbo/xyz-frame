@@ -43,7 +43,7 @@ import org.springframework.web.servlet.view.JstlView;
     //测试，开启此注解，Junit启动报错，不开启可正常使用
     //class与yml均可进行配置，Class会覆盖xml
 
-@Configuration
+//@Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
