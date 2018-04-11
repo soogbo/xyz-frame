@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import xyz.frame.json.FrameJsonUtils;
+import xyz.frame.utils.SysLog;
 
 /**
  * 测试jsp访问
@@ -26,6 +27,7 @@ public class DebtTestController {
 
 	@RequestMapping(value="/loan/deduct",method=RequestMethod.POST)
 	@ResponseBody
+	@SysLog(table = "test_table_record")
 	public String helloJsp(HttpServletRequest request,HttpServletResponse response,
 	        @RequestParam String reqUuid,
 	        @RequestParam String deductionNo,
