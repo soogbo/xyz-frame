@@ -22,7 +22,10 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-    
+  data:
+    mongodb:
+      uri: mongodb://collection:Y29sbGVjdGlvbkAyMzQ1@172.16.0.140:27017,172.16.0.140:27018,172.16.0.140:27019/collection
+    #
     # 静态资源
 #    resources:
 #    static-locations:

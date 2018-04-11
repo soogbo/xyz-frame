@@ -116,7 +116,11 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>RELEASE</version>
 		</dependency>
-
+		<!--mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
 		<!-- begin slf4j logback -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
