@@ -20,7 +20,7 @@ public class ParseAnn {
     static void testDemo1() {
         try {
             // 使用类加载器加载类
-            Class c = Class.forName("xyz.java.main.annotation.UseAnnotationDemo");
+            Class<?> c = Class.forName("xyz.java.main.annotation.UseAnnotationDemo");
             // 找到类上面的注解
             boolean isExist = c.isAnnotationPresent(MongoLog.class);
             // 上面的这个方法是用这个类来判断这个类是否存在Description这样的一个注解
@@ -38,7 +38,7 @@ public class ParseAnn {
 
     static void testDemo2() {
         try {
-            Class c = Class.forName("xyz.java.main.annotation.UseAnnotationDemo");
+            Class<?> c = Class.forName("xyz.java.main.annotation.UseAnnotationDemo");
             // 获取所有的方法
             // Method[] ms = c.getMethods();
             Method[] ms = c.getDeclaredMethods();
