@@ -10,9 +10,11 @@ public enum ResultEnum {
     /**
      * 统一异常返回结果
      */
-    UNKONW_ERROR(-1, "未知错误"),
+    UNKONW_ERROR(-1, "未知错误！"),
     SUCCESS(0, "成功"),
-	SERVICE_ERROR(1, "业务处理错误");
+	SERVICE_ERROR(1, "业务处理错误！"),
+    NULL_OBJECT(2, "处理对象为空！"),
+    ;
 
     private int code;
     private String msg;

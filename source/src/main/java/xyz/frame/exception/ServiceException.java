@@ -1,5 +1,7 @@
 package xyz.frame.exception;
 
+import xyz.frame.pojo.common.ResultEnum;
+
 /**
  * 自定义抛出异常给前台。
  *
@@ -14,6 +16,11 @@ public class ServiceException extends RuntimeException {
 	 * 错误信息
 	 */
 	private String errorMsg;
+	
+	public ServiceException(ResultEnum result) {
+	    this.errorCode = result.getCode();
+	    this.errorMsg = result.getMsg();
+	}
 
 	public ServiceException(int errorCode, String errorMsg) {
 		super();

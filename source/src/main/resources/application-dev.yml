@@ -24,7 +24,8 @@ spring:
     maxOpenPreparedStatements: 20
   data:
     mongodb:
-      uri: mongodb://collection:Y29sbGVjdGlvbkAyMzQ1@172.16.0.140:27017,172.16.0.140:27018,172.16.0.140:27019/collection
+      uri: mongodb://xyzframe:xyzframe@101.132.104.23:27017/xyz_frame
+      # 集群配置 mongodb://xyzframe:xyzframe@172.16.0.140:27017,172.16.0.140:27018,172.16.0.140:27019/xyz_frame
     #
     # 静态资源
 #    resources:
