@@ -1,4 +1,4 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.configure.schedule.quartz;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;

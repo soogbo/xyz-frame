@@ -1,4 +1,4 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.configure.schedule.quartz;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;

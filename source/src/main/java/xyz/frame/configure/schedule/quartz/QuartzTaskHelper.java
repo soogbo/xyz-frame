@@ -1,4 +1,4 @@
-package xyz.frame.configure.schedule;
+package xyz.frame.configure.schedule.quartz;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
