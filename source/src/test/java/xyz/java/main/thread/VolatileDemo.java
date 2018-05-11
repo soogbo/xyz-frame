@@ -1,4 +1,4 @@
-package xyz.java.main.sms;
+package xyz.java.main.thread;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
