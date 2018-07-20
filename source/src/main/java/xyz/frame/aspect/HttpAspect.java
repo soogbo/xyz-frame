@@ -24,8 +24,8 @@ import xyz.frame.utils.Profiler;
 /**
  * 定义http切面，对HTTP请求切入，进行日志记录
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class HttpAspect {
 
     @Autowired
@@ -35,7 +35,8 @@ public class HttpAspect {
 
     // 切点，所有http请求的controller
     @Pointcut("execution(public * xyz.frame.controller..*.*(..))")
-    public void log() {
+    public void httplog() {
+        
     }
 
     @Before("log()")

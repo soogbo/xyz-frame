@@ -32,5 +32,11 @@ public class ParamController {
         List<ParamParam> list = paramParamService.findAll();
         return RestResultUtil.success(list);
     }
+    
+    @GetMapping("/param/testDeleteAll")
+    public ResponseResult<?> testDeleteAll() {
+        paramParamService.testDeleteAll();
+        return RestResultUtil.success();
+    }
 
 }

@@ -26,4 +26,12 @@ public interface ParamParamService {
      * @return
      */
     List<ParamParam> findAll();
+    
+    /**
+     * 删除全部
+     * 
+     * @param
+     * @return
+     */
+    void testDeleteAll();
 }

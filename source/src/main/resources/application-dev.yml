@@ -47,3 +47,10 @@ spring.redis.password: sider
 spring.redis.timeout: 600000
 spring.redis.database: 13
 
+# elastic-job注册中心使用的zk地址，使用英文逗号分隔
+elasticJob.registryCenter.serverList: 172.17.16.99:2181
+elasticJob.namespace: xyz.frame.elasticjob
+
+mybatis.performance.switch: 0
+mybatis.performance.maxTime: 3000
+

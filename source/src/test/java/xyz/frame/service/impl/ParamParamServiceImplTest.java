@@ -33,8 +33,8 @@ public class ParamParamServiceImplTest extends AbstractTest {
 
     @Test
     public void selectAll() {
-        List<ParamParam> list = paramParamMapper.selectAll();
-        System.out.println(FrameJsonUtils.toJson(list));
+//        List<ParamParam> list = paramParamMapper.selectAll();
+//        System.out.println(FrameJsonUtils.toJson(list));
     }
 
 }

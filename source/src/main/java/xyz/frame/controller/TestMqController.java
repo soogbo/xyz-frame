@@ -29,7 +29,6 @@ public class TestMqController {
 	public ResponseResult<?> submitTestMqProducer() {
 		List<Integer> arrayList = new ArrayList<>();
 		Collections.addAll(arrayList, 1, 2, 3, 4, 5, 6);
-//		throw new ServiceException(1, "asd");
 		submitTestMqProducer.sendOperationToMq(arrayList);
 		return RestResultUtil.success(arrayList);
 	}

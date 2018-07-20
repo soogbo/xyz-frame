@@ -11,7 +11,7 @@ import xyz.frame.service.ParamParamService;
 
 @Service("paramParamService")
 public class ParamParamServiceImpl implements ParamParamService {
-
+    
     @Autowired
     private ParamParamMapper paramParamMapper;
 
@@ -23,6 +23,11 @@ public class ParamParamServiceImpl implements ParamParamService {
     @Override
     public List<ParamParam> findAll() {
         return paramParamMapper.selectAll();
+    }
+    
+    @Override
+    public void testDeleteAll() {
+        paramParamMapper.testDeleteAll();
     }
 
 }
