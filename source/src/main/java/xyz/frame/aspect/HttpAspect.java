@@ -24,8 +24,8 @@ import xyz.frame.utils.Profiler;
 /**
  * 定义http切面，对HTTP请求切入，进行日志记录
  */
-//@Aspect
-//@Component
+@Aspect
+@Component
 public class HttpAspect {
 
     @Autowired
@@ -33,38 +33,32 @@ public class HttpAspect {
 
     private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
-    // 切点，所有http请求的controller
-    @Pointcut("execution(public * xyz.frame.controller..*.*(..))")
+    @Pointcut("execution(public * xyz.frame..*Controller.*(..))")
     public void httplog() {
-        
+        // 切点，所有http请求的controller
+        //    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)||@annotation(org.springframework.web.bind.annotation.GetMapping)||@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     }
 
-    @Before("log()")
+    @Before("httplog()")
     public void doBefore(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
         // url
-        logger.info("url={}", request.getRequestURL());
-
+        logger.info("HTTP Request：url={}", request.getRequestURL());
         // method
         logger.info("method={}", request.getMethod());
-
         // ip
         logger.info("ip={}", request.getRemoteAddr());
-
         // 类方法
         logger.info("class_method={}",
                 joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-
         // 参数
         logger.info("args={}", joinPoint.getArgs());
-
         // 使用线程变量即时
         Profiler.begin();
     }
 
-    @Around("log()")
+    @Around("httplog()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
             return proceedingJoinPoint.proceed();
@@ -73,16 +67,17 @@ public class HttpAspect {
         }
     }
 
-    @After("log()")
+    @After("httplog()")
     public void doAfter() {
         logger.info("aop doAfter");
     }
 
-    @AfterReturning(returning = "object", pointcut = "log()")
+    @AfterReturning(returning = "object", pointcut = "httplog()")
     public void doAfterReturning(Object object) {
         logger.info("response={}", FrameJsonUtils.toJson(object));
         // 使用线程变量即时
         logger.info("time cost={}", Profiler.end() / 1000 + " 秒");
+        logger.info("====== HTTP Request END ======");
     }
 
 }
