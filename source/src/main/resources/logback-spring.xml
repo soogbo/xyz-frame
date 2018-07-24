@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!-- 控制台输出日志 -->
+	<conversionRule converterClass="xyz.frame.configure.IpLogConfig" conversionWord="ip"/>
+    <springProperty source="log.application.name" name="log.application.name" scope="context"/>
+    <springProperty source="log.pro.level" name="log.pro.level" scope="context"/>
+    <springProperty source="log.dev.level" name="log.dev.level" scope="context"/>
+    <springProperty source="log.file.name" name="log.file.name" scope="context"/>
+    <springProperty source="log.file.maxIndex" name="log.file.maxIndex" scope="context"/>
+    <springProperty source="log.file.maxFileSize" name="log.file.maxFileSize" scope="context"/>
+    <property name="LOG_PATTERN" value="[${log.application.name}] [%ip] [${PID}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [%t] [%c] [%M] [%L] : %m%n"/>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+	
+    <!-- 按小时生成日志文件，最多保留 ${log.file.maxIndex}小时日志文件，每小时文件再按${log.file.maxFileSize}大切分-->
+    <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home:-.}/logs/${log.file.name}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.home:-.}/logs/${log.file.name}.%d{yyyy-MM-dd-HH}.%i.log.gz</fileNamePattern>
+            <maxHistory>${log.file.maxIndex}</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${log.file.maxFileSize}</MaxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <springProfile name="pro,pre,test,t1,t2,t3">
+        <root level="${log.pro.level}">
+            <appender-ref ref="fileAppender" />
+        </root>    
+    </springProfile>
+    <springProfile name="dev">
+        <root level="${log.dev.level}">
+            <appender-ref ref="consoleAppender" />
+            <appender-ref ref="fileAppender" />
+        </root>    
+    </springProfile> 
+    
+    <!-- 指定logger name为包名或类全名 指定级别 additivity设置是否传递到root logger -->
+	<logger name="slf4j" level="INFO" />
+    <!-- slf4j2包下的类在ERROR级别时候传递到root logger中 -->
+<!--     <logger name="org.springframework" level="ERROR" /> -->
+    <logger name="slf4j2" level="ERROR" />
+    <logger name="org.hibernate" level="ERROR" />
+    <logger name="org.jboss.logging" level="ERROR" />
+    <logger name="com.mchange.v2" level="ERROR" />
+    <logger name="org.apache.http" level="ERROR" />
+    <logger name="com.alibaba.dubbo" level="ERROR" />
+    <logger name="org.eclipse.jetty" level="ERROR" />
+    <logger name="org.apache.zookeeper" level="ERROR" />
+    <logger name="me.chyxion" level="ERROR" />
+    <logger name="org.apache.kafka" level="ERROR" />
+    <logger name="kafka" level="ERROR" />
+    <logger name="mybatis_xyz.frame" level="ERROR" />
+</configuration>
