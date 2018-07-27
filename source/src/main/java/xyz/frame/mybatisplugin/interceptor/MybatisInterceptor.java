@@ -8,7 +8,6 @@ import xyz.frame.mybatisplugin.annotation.NoSqlInterceptor;
 import xyz.frame.mybatisplugin.exception.MybatisPluginException;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -23,7 +22,6 @@ import org.springframework.stereotype.Component;
 import java.io.StringReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Objects;
 import java.util.Properties;

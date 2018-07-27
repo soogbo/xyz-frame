@@ -14,6 +14,7 @@ public enum ResultEnum {
     SUCCESS(0, "成功"),
 	SERVICE_ERROR(1, "业务处理错误！"),
     NULL_OBJECT(2, "处理对象为空！"),
+    PASSWORD_ERROR(5001, "密码错误！"),
     ;
 
     private int code;

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.frame.pojo.po.ParamParam;
+import xyz.frame.rbac.mapper.RbacUserMapper;
+import xyz.frame.rbac.pojo.po.RbacUser;
 import xyz.frame.service.ParamParamService;
 import xyz.frame.utils.ResponseResult;
 import xyz.frame.utils.RestResultUtil;
@@ -21,6 +23,14 @@ public class ParamController {
 
     @Autowired
     private ParamParamService paramParamService;
+    @Autowired
+    private RbacUserMapper rbacUserMapper;
+    @GetMapping("/param/findAllUser")
+    public ResponseResult<?> findAllUser() {
+        List<RbacUser> list = rbacUserMapper.selectAll();
+        return RestResultUtil.success(list);
+    }
+    
 
     /*@RequestMapping("/sysParam")
     public String sysParam(Model model) {

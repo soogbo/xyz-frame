@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +28,7 @@ public class ImportFileServiceImpl implements ImportFileService {
     @Autowired
     private QuizzesMapper quizzesMapper;
 
+    @SuppressWarnings("resource")
     public void ImportFileToDb(String fileName) {
         List<Quizzes> quizzesList = new ArrayList<>();
         File txtFile = new File("C:\\Users\\shisp\\Desktop\\quiz\\"+fileName);
@@ -53,7 +53,7 @@ public class ImportFileServiceImpl implements ImportFileService {
                         Thread.sleep(100);
                     }
                 } catch (Exception e) {
-                    logger.info(FrameJsonUtils.toJson(quizzes));
+                    logger.info(FrameJsonUtils.toJson(quizzes), e);
                 }
             }
             /*if (quizzesList != null && !quizzesList.isEmpty()) {

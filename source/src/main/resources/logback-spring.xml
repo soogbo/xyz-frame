@@ -15,11 +15,11 @@
         </encoder>
     </appender>
 	
-    <!-- 按小时生成日志文件，最多保留 ${log.file.maxIndex}小时日志文件，每小时文件再按${log.file.maxFileSize}大切分-->
+    <!-- 按天生成日志文件，最多保留 ${log.file.maxIndex}小时日志文件，每天文件再按${log.file.maxFileSize}大切分-->
     <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${catalina.home:-.}/logs/${log.file.name}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${catalina.home:-.}/logs/${log.file.name}.%d{yyyy-MM-dd-HH}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${catalina.home:-.}/logs/${log.file.name}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <maxHistory>${log.file.maxIndex}</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>${log.file.maxFileSize}</MaxFileSize>

@@ -9,7 +9,23 @@ import xyz.dev.generator.main.MapperGenerator;
  * @author LS
  */
 public class TestGenerator{
+    
+    // 数据库名
+    public static final String tableSchema = "xyz_frame";
 
+    public static void autoGenSource(String tablename, String moduleName) {
+        String entityName = "";
+        if (tablename.contains("_") && !tablename.startsWith("_") && !tablename.endsWith("_")) {
+            String[] split = tablename.split("_");
+            for (String string : split) {
+                char upperCase = Character.toUpperCase(string.charAt(0));
+                string = upperCase + string.substring(1);
+                entityName += string;
+            }
+        }
+        genSource(entityName, tableSchema, tablename, moduleName);
+    }
+    
 	/**
 	 * 生成entity类、mapper接口
 	 * @param entity 实体类名
@@ -20,7 +36,7 @@ public class TestGenerator{
 	public static void genSource(String entity,String tableSchema,String tablename, String moduleName){
 		boolean result = true;
 		
-		String projectBasePath = "D:/xyz-frame-autocreate-po-mapper/";
+		String projectBasePath = "C:/xyz-frame/";
 		Generator gen = new EntityGenerator();
 		gen.setEntity(entity);		
 		gen.setTableSchema(tableSchema);
@@ -69,7 +85,15 @@ public class TestGenerator{
 		for(String k:config.keySet()){
 			genSource(k,tableSchema,config.get(k),moduleName);
 		}*/
-		genSource("Quizzes", "xyz_frame", "quizzes", "");
+	    
+	    autoGenSource("rbac_group", "rbac");
+	    autoGenSource("rbac_menu", "rbac");
+	    autoGenSource("rbac_permission", "rbac");
+	    autoGenSource("rbac_role", "rbac");
+	    autoGenSource("rbac_role_permission", "rbac");
+	    autoGenSource("rbac_user", "rbac");
+	    autoGenSource("rbac_user_role", "rbac");
+		
 	}
 
 }

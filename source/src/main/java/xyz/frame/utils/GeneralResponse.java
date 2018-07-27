@@ -18,6 +18,10 @@ public class GeneralResponse<T> {
     public static <T> GeneralResponse<T> success(T data) {
         return new GeneralResponse<>(data);
     }
+    
+    public static <T> GeneralResponse<T> fail(T data) {
+        return new GeneralResponse<>("5000", (String)data);
+    }
 
     public static GeneralResponse<String> success(String code, String message) {
         return new GeneralResponse<>(code, message);

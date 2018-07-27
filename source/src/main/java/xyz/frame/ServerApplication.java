@@ -12,7 +12,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author shisp
  * @date 2017年11月27日 下午2:28:20
  */
-@MapperScan(basePackages = "xyz.frame.mapper")
+@MapperScan(basePackages = "xyz.frame.**.mapper")
 // 使用tk分页插件时，mapperScan把包名org修改为tk
 @SpringBootApplication
 @EnableConfigurationProperties

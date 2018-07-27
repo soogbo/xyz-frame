@@ -11,7 +11,6 @@ import xyz.frame.pojo.po.ParamClass;
 import xyz.frame.pojo.po.ParamParam;
 import xyz.frame.utils.FrameMapper;
 
-@Repository
 public interface ParamParamMapper extends FrameMapper<ParamParam> {
 
     @Update({ "update ", ParamParam.TABLE_NAME, " set class_id = null where class_id = #{class_id}" })
