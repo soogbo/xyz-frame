@@ -7,51 +7,51 @@ import xyz.frame.pojo.common.ResultEnum;
  *
  */
 public class ServiceException extends RuntimeException {
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 错误码
-	 */
-	private int errorCode;
-	/**
-	 * 错误信息
-	 */
-	private String errorMsg;
-	
-	public ServiceException(ResultEnum result) {
-	    this.errorCode = result.getCode();
-	    this.errorMsg = result.getMsg();
-	}
+    private static final long serialVersionUID = 1L;
+    /**
+     * 错误码
+     */
+    private int errorCode;
+    /**
+     * 错误信息
+     */
+    private String errorMsg;
 
-	public ServiceException(int errorCode, String errorMsg) {
-		super();
-		this.errorCode = errorCode;
-		this.errorMsg = errorMsg;
-	}
+    public ServiceException(int errorCode, String errorMsg) {
+        super();
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
 
-	public ServiceException(int errorCode, String errorMsg, Exception e) {
-		super(e);
-		this.errorCode = errorCode;
-		this.errorMsg = errorMsg;
-	}
+    public ServiceException(int errorCode, String errorMsg, Exception e) {
+        super(e);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
 
-	@Override
-	public String getMessage() {
-		return "错误码:" + errorCode + ",错误描述:" + errorMsg;
-	}
+    public ServiceException(ResultEnum resultEnum) {
+        this.errorCode = resultEnum.getCode();
+        this.errorMsg = resultEnum.getMsg();
+    }
 
-	public int getErrorCode() {
-		return errorCode;
-	}
+    @Override
+    public String getMessage() {
+        return "错误码:" + errorCode + ",错误描述:" + errorMsg;
+    }
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
-	}
+    public int getErrorCode() {
+        return errorCode;
+    }
 
-	public String getErrorMsg() {
-		return errorMsg;
-	}
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
 
-	public void setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
-	}
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 }

@@ -9,10 +9,10 @@
 	<!-- 按照固定窗口模式生成日志文件，当文件大于20MB时，生成新的日志文件。窗口大小是1到3，当保存了3个归档文件后，将覆盖最早的日志 -->
 	<appender name="SizeFILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${catalina.home:-.}/logs/xyz-frame_junit.log</file>
+		<file>${catalina.home:-.}/logs/xyz-frame.log</file>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-			<fileNamePattern>${catalina.home:-.}/logs/xyz-frame_junit.%i.log</fileNamePattern>
+			<fileNamePattern>${catalina.home:-.}/logs/xyz-frame.%i.log</fileNamePattern>
 			<minIndex>1</minIndex>
 			<maxIndex>20</maxIndex>
 		</rollingPolicy>
@@ -22,7 +22,7 @@
 			<maxFileSize>20MB</maxFileSize>
 		</triggeringPolicy>
 		<encoder>
-			<pattern>[xyz.frame] %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [%thread]>>> %msg%n
+			<pattern>[xyz-frame] %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} [%thread]>>> %msg%n
 			</pattern>
 		</encoder>
 	</appender>	

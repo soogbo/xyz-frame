@@ -94,6 +94,12 @@ public class TestGenerator{
 	    autoGenSource("rbac_user", "rbac");
 	    autoGenSource("rbac_user_role", "rbac");
 		
+		/*genSource("Category", "xyz_frame", "category", "mrshi");
+		genSource("Customer", "xyz_frame", "customer", "mrshi");
+		genSource("Goods", "xyz_frame", "goods", "mrshi");
+		genSource("Order", "xyz_frame", "order", "mrshi");
+		genSource("OrderGoods", "xyz_frame", "order_goods", "mrshi");
+		genSource("Supplier", "xyz_frame", "supplier", "mrshi");*/
 	}
 
 }

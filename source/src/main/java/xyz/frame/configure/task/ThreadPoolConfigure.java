@@ -36,42 +36,4 @@ public class ThreadPoolConfigure {
 		pool.afterPropertiesSet(); // 初始化
 		return pool;
 	}
-	
-	/**
-	 * 导入和操作公用的线程池 
-	 * @return ThreadPoolTaskExecutor
-	 */
-//	@Bean(name="importTaskExecutor")
-//	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public ThreadPoolTaskExecutor getImportTaskExecutor(){
-		ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
-		pool.setCorePoolSize(20); // 最少线程数2	
-		pool.setMaxPoolSize(100); // 最大线程数
-		pool.setQueueCapacity(4000); // 任务队列数量
-		pool.setKeepAliveSeconds(60);
-		pool.setRejectedExecutionHandler(new java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy());		
-		pool.setAwaitTerminationSeconds(10);// 线程空间结束的时间
-		pool.setWaitForTasksToCompleteOnShutdown(true); // 等待线程结束再退出
-		pool.afterPropertiesSet(); // 初始化
-		return pool;
-	}
-	
-	/**
-	 * 短信功能的线程池
-	 * @return ThreadPoolTaskExecutor
-	 */
-//	@Bean(name="smsManagerExecutor")
-//	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public ThreadPoolTaskExecutor getSmsManagerExecutor(){
-		ThreadPoolTaskExecutor pool = new ThreadPoolTaskExecutor();
-		pool.setCorePoolSize(10); // 最少线程数2	
-		pool.setMaxPoolSize(100); // 最大线程数
-		pool.setQueueCapacity(2000); // 任务队列数量
-		pool.setKeepAliveSeconds(60);
-		pool.setRejectedExecutionHandler(new java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy());		
-		pool.setAwaitTerminationSeconds(10);// 线程空间结束的时间
-		pool.setWaitForTasksToCompleteOnShutdown(true); // 等待线程结束再退出
-		pool.afterPropertiesSet(); // 初始化
-		return pool;
-	}
 }

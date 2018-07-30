@@ -26,7 +26,7 @@ public class FrameJsonUtils {
      * @return
      */
     public static <T> T fromJson(String json, TypeReference<T> type){
-        return JSON.parseObject(json,new TypeReference<T>(){});
+        return JSON.parseObject(json,type);
     }
     
     /**
