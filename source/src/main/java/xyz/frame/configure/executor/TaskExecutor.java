@@ -1,4 +1,4 @@
-package xyz.frame.configure.task;
+package xyz.frame.configure.executor;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

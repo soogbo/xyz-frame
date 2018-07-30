@@ -1,4 +1,4 @@
-package xyz.frame.configure.task;
+package xyz.frame.configure.executor;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;

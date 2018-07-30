@@ -1,4 +1,4 @@
-package xyz.frame.configure.task;
+package xyz.frame.configure.executor;
 /**
  * 异步执行的异常
  */
