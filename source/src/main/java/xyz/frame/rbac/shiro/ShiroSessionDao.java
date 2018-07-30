@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2018-7-27 15:28:05
  */
 //@Component
+@Deprecated
 public class ShiroSessionDao extends EnterpriseCacheSessionDAO {
     private static final Logger LOGGER = LoggerFactory.getLogger(ShiroSessionDao.class);
 

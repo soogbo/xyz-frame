@@ -9,16 +9,30 @@ import java.io.Serializable;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.SimpleSession;
 import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-public class SessionRedisDao extends EnterpriseCacheSessionDAO {
+import xyz.frame.configure.redis.FrameRedis;
 
+@Component
+public class SessionRedisDao extends EnterpriseCacheSessionDAO {
+    /**
+     * session redis key
+     */
+    private static final String SHIRO_SESSION_PREFIX = "xyz_frame:shiro_session:";
+
+    /**
+     * session 过期时间(单位: 分钟) 24小时
+     */
+    private static final int SHIRO_SESSION_EXPIRE = 1440;
+
+    @Autowired
+    private FrameRedis frameRedis;
     // 创建session，保存到数据库
     @Override
     protected Serializable doCreate(Session session) {
         Serializable sessionId = super.doCreate(session);
-        RedisDb.setObject(sessionId.toString().getBytes(), sessionToByte(session));
-        
+        frameRedis.setObject((SHIRO_SESSION_PREFIX+sessionId.toString()).getBytes(), sessionToByte(session), SHIRO_SESSION_EXPIRE);
         return sessionId;
     }
 
@@ -28,7 +42,7 @@ public class SessionRedisDao extends EnterpriseCacheSessionDAO {
         // 先从缓存中获取session，如果没有再去数据库中获取
         Session session = super.doReadSession(sessionId); 
         if(session == null){
-            byte[] bytes = RedisDb.getObject(sessionId.toString().getBytes());
+            byte[] bytes = frameRedis.getObject((SHIRO_SESSION_PREFIX+sessionId.toString()).getBytes());
             if(bytes != null && bytes.length > 0){
                 session = byteToSession(bytes);    
             }
@@ -40,14 +54,14 @@ public class SessionRedisDao extends EnterpriseCacheSessionDAO {
     @Override
     protected void doUpdate(Session session) {
         super.doUpdate(session);
-        RedisDb.setObject(session.getId().toString().getBytes(), sessionToByte(session));
+        frameRedis.setObject((SHIRO_SESSION_PREFIX+session.getId().toString()).getBytes(), sessionToByte(session), SHIRO_SESSION_EXPIRE);
     }
 
     // 删除session
     @Override
     protected void doDelete(Session session) {
         super.doDelete(session);
-        RedisDb.delString(session.getId() + "");
+        frameRedis.delString(SHIRO_SESSION_PREFIX+session.getId());
     }
 
     // 把session对象转化为byte保存到redis中

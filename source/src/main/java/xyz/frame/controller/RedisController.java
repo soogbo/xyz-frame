@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import xyz.frame.configure.redis.FrameRedis;
 import xyz.frame.configure.redis.RedisService;
+import xyz.frame.utils.GeneralResponse;
 import xyz.frame.utils.ResponseResult;
 import xyz.frame.utils.RestResultUtil;
 
@@ -29,20 +31,39 @@ public class RedisController {
     private static final Logger logger = LoggerFactory.getLogger(RedisController.class);
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private FrameRedis frameRedis;
 
     @ApiOperation(value = "redis set")
-    @GetMapping(value = "/set")
-    public ResponseResult<?> set(@RequestParam(value = "key") String key,@RequestParam(value = "value") String value) {
-        logger.info("redis set:key={},value={}",key,value);
+    @GetMapping(value = "/set1")
+    public ResponseResult<?> set1(@RequestParam(value = "key") String key, @RequestParam(value = "value") String value) {
+        logger.info("redis set:key={},value={}", key, value);
         boolean set = redisService.set(key, value);
         return RestResultUtil.success(set);
     }
+
     @ApiOperation(value = "redis get")
-    @GetMapping(value = "/get")
-    public ResponseResult<?> get(@RequestParam(value = "key") String key) {
-        logger.info("redis get:key={}",key);
+    @GetMapping(value = "/get1")
+    public ResponseResult<?> get1(@RequestParam(value = "key") String key) {
+        logger.info("redis get:key={}", key);
         String value = redisService.get(key);
         return RestResultUtil.success(value);
     }
-    
+
+    @ApiOperation(value = "redis set user Jedis")
+    @GetMapping(value = "/set2")
+    public GeneralResponse<String> set2(@RequestParam(value = "key") String key, @RequestParam(value = "value") String value) {
+        logger.info("redis set:key={},value={}", key, value);
+        frameRedis.setString(key, value);
+        return GeneralResponse.success();
+    }
+
+    @ApiOperation(value = "redis get user Jedis")
+    @GetMapping(value = "/get2")
+    public GeneralResponse<String> get2(@RequestParam(value = "key") String key) {
+        logger.info("redis get:key={}", key);
+        String value = frameRedis.getString(key);
+        return GeneralResponse.success(value);
+    }
+
 }

@@ -11,13 +11,16 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 
 import redis.clients.jedis.JedisPoolConfig;
 
+
 /**
- * Created by liwenlong on 2018-04-02.
+ * redis config, 使用RedisTemplate 连接
+ * @author shisp
+ * @date 2018-7-30 09:30:35
  */
 @Configuration
 @EnableAutoConfiguration
-public class RedisConfig {
-    private static Logger logger = Logger.getLogger(RedisConfig.class);
+public class RedisTemplateConfig {
+    private static Logger logger = Logger.getLogger(RedisTemplateConfig.class);
 
     //获取springboot配置文件的值 (get的时候获取)
 	@Value(value = "${spring.redis.hostName}")

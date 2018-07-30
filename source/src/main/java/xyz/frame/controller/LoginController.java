@@ -1,4 +1,4 @@
-package xyz.frame.rbac.shiro;
+package xyz.frame.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
