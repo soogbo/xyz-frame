@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>stomp</title>
+    <title>stomp-websocket</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script type="text/javascript">
     // 建立连接对象（还未发起连接）
-    var socket = new SockJS("http://localhost:80/webSocketServer");
+    var socket = new SockJS("http://127.0.0.1:80/webSocketServer");
 
     // 获取 STOMP 子协议的客户端对象
     var stompClient = Stomp.over(socket);

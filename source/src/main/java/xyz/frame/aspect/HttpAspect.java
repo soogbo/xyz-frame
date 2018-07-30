@@ -27,13 +27,12 @@ import xyz.frame.utils.Profiler;
 @Aspect
 @Component
 public class HttpAspect {
+    private static final Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
     @Autowired
     private ExceptionHandle exceptionHandle;
 
-    private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
-
-    @Pointcut("execution(public * xyz.frame..*Controller.*(..))")
+    @Pointcut("execution(public * xyz.frame..*Controller.*(..)) && !within(xyz.frame..WebSocketController)")
     public void httplog() {
         // 切点，所有http请求的controller
         //    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)||@annotation(org.springframework.web.bind.annotation.GetMapping)||@annotation(org.springframework.web.bind.annotation.RequestMapping)")

@@ -1,5 +1,6 @@
 package xyz.frame.configure.websocket;
 
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
  * @author shisp
  * @date 2018-7-30 16:59:52
  */
+@RequiresGuest // 无权限控制，直接可访问
 @Controller
 public class WebSocketController {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketController.class);
