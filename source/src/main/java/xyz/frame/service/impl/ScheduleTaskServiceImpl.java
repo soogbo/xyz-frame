@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.configure.schedule.QuartzTaskHelper;
+import xyz.frame.configure.schedule.quartz.QuartzTaskHelper;
 import xyz.frame.exception.ServiceException;
 import xyz.frame.mapper.ScheduleTaskMapper;
 import xyz.frame.pojo.common.TaskStateEnum;
