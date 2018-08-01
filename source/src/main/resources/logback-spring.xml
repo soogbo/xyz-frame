@@ -8,7 +8,7 @@
     <springProperty source="log.file.name" name="log.file.name" scope="context"/>
     <springProperty source="log.file.maxIndex" name="log.file.maxIndex" scope="context"/>
     <springProperty source="log.file.maxFileSize" name="log.file.maxFileSize" scope="context"/>
-    <property name="LOG_PATTERN" value="[${log.application.name}] [%ip] [${PID}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [%t] [%c] [%M] [%L] : %m%n"/>
+    <property name="LOG_PATTERN" value="[${log.application.name}] [%ip] [${PID}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [%t] [%c] : %m%n"/>
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${LOG_PATTERN}</pattern>
