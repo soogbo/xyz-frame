@@ -1,4 +1,4 @@
-package xyz.frame.rbac.shiro;
+package xyz.frame.configure.shiro;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

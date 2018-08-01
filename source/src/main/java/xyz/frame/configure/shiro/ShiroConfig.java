@@ -1,4 +1,4 @@
-package xyz.frame.rbac.shiro;
+package xyz.frame.configure.shiro;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
