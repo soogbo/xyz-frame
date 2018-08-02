@@ -32,7 +32,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @EnableBatchProcessing
 public class PersonBatchConfiguration {
 	//插入语句
-   private static final String PERSON_INSERT = "INSERT INTO Person (personName, personAge,personSex) VALUES (:personName, :personAge,:personSex)";
+   private static final String PERSON_INSERT = "INSERT INTO person (personName, personAge,personSex) VALUES (:personName, :personAge,:personSex)";
    // tag::readerwriterprocessor[] 1.读数据
     @Bean
     public ItemReader<Person> reader() {
@@ -57,7 +57,7 @@ public class PersonBatchConfiguration {
     //3.写数据
     @Bean
     public ItemWriter<Person> writer(DataSource dataSource) {
-        JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>();
+        JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
         writer.setSql(PERSON_INSERT);
         writer.setDataSource(dataSource);
@@ -67,13 +67,13 @@ public class PersonBatchConfiguration {
 
     
     // tag::jobstep[]
-    @Bean
+    @Bean(name = "importUserJob")
     public Job importUserJob(JobBuilderFactory jobs, @Qualifier("step1")Step s1, JobExecutionListener listener) {
         return jobs.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
-                .flow(s1)
-                .end()
+//                .flow(s1)
+                .start(s1)
                 .build();
     }
 

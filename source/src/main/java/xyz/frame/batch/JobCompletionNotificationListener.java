@@ -1,6 +1,7 @@
 package xyz.frame.batch;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
    
-   private static final String PERSON_SQL = "SELECT personName, personAge,personSex FROM Person";
+   private static final String PERSON_SQL = "SELECT personName, personAge,personSex FROM person";
 	
    private static final Logger log = LoggerFactory.getLogger(JobCompletionNotificationListener.class);
     @Autowired
@@ -41,7 +42,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 			List<Person> results = jdbcTemplate.query(PERSON_SQL, new RowMapper<Person>() {
 				@Override
 				public Person mapRow(ResultSet rs, int row) throws SQLException {
-					return new Person(rs.getString(1), rs.getString(2),rs.getString(3));
+					return new Person(rs.getString(1), rs.getString(2),rs.getString(3),new Date());
 				}
 			});
             log.info("入库条数---------"+results.size());

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.frame.utils.GeneralResponse;
+import xyz.frame.utils.RbacUserUtils;
 
 /**
  * @author shisp
@@ -31,7 +32,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = "/login")
-    public GeneralResponse<String> login(HttpServletResponse resp, @RequestParam(name = "username", required = true) String username,
+    public GeneralResponse<Object> login(HttpServletResponse resp, @RequestParam(name = "username", required = true) String username,
             @RequestParam(name = "password", required = true) String password) {
         AuthenticationToken authenticationToken = new UsernamePasswordToken(username, password, null);
 
@@ -45,6 +46,6 @@ public class LoginController {
             logger.info("登录失败", e);
             return GeneralResponse.fail("请先登录!");
         }
-        return GeneralResponse.success((String) SecurityUtils.getSubject().getPrincipal());
+        return GeneralResponse.success(RbacUserUtils.getCurrentUser());
     }
 }

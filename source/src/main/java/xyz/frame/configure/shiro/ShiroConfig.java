@@ -13,6 +13,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -24,6 +25,7 @@ import org.springframework.context.annotation.DependsOn;
  * @date 2018-7-27 15:36:19
  */
 @Configuration
+@EnableAutoConfiguration
 public class ShiroConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ShiroConfig.class);
 
@@ -67,6 +69,7 @@ public class ShiroConfig {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 		securityManager.setRealm(shiroRealm(hashedCredentialsMatcher()));
 		securityManager.setSessionManager(defaultWebSessionManager());
+		// securityManager.setCacheManager(redisCacheManager);
 		return securityManager;
 	}
 

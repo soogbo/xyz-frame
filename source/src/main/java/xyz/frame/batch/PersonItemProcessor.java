@@ -1,6 +1,7 @@
 package xyz.frame.batch;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import org.springframework.jdbc.core.RowMapper;
  */
 public class PersonItemProcessor implements ItemProcessor<Person, Person> {
 	//查询
-	private static final String GET_PRODUCT = "select * from Person where personName = ?";
+	private static final String GET_PRODUCT = "select * from person where personName = ?";
 	
     private static final Logger log = LoggerFactory.getLogger(PersonItemProcessor.class);
     @Autowired
@@ -44,7 +45,7 @@ public class PersonItemProcessor implements ItemProcessor<Person, Person> {
         	sex ="女";
         }
         log.info("转换 (性别："+person.getPersonSex()+") 为 (" + sex + ")");
-        final Person transformedPerson = new Person(person.getPersonName(), person.getPersonAge(),sex);
+        final Person transformedPerson = new Person(person.getPersonName(), person.getPersonAge(),sex, new Date());
         log.info("转换 (" + person + ") 为 (" + transformedPerson + ")");
 
         return transformedPerson;

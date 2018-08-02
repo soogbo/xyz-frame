@@ -1,5 +1,7 @@
 package xyz.frame.configure.redis;
 import org.apache.log4j.Logger;
+import org.crazycake.shiro.RedisCacheManager;
+import org.crazycake.shiro.RedisManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -73,10 +75,12 @@ public class RedisTemplateConfig {
         return template;
     }
     
+    // 下面可整合shiro时使用，redis与shiro配置合并
     
     /**
      * redisManager
      * @return
+     */
     @Bean(name = "redisManager")
     public RedisManager redisManager() {
     	RedisManager redisManager  = new RedisManager();
@@ -87,8 +91,18 @@ public class RedisTemplateConfig {
     	redisManager.setTimeout(redisTimeout);
     	return redisManager;
     }
-     */
 
+    /**
+     * RedisCacheManager
+     * @return
+     */
+    @Bean(name = "redisCacheManager")
+    public RedisCacheManager redisCacheManager() {
+        RedisCacheManager cacheManager = new RedisCacheManager();
+        cacheManager.setRedisManager(redisManager());
+        return cacheManager;
+    }
+    
     /**
      * RedisSessionDAO
      * @return
@@ -101,16 +115,6 @@ public class RedisTemplateConfig {
     }
      */
     
-    /**
-     * RedisCacheManager
-     * @return
-    @Bean(name = "redisCacheManager")
-    public RedisCacheManager redisCacheManager() {
-    	RedisCacheManager cacheManager = new RedisCacheManager();
-    	cacheManager.setRedisManager(redisManager());
-    	return cacheManager;
-    }
-     */
     
     /**
      * sessionManager

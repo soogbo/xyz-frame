@@ -16,6 +16,13 @@ public enum ResultEnum {
     NULL_OBJECT(2, "处理对象为空！"),
     PASSWORD_ERROR(5001, "密码错误！"),
     
+    LOGIN_SUCCESS(0, "登录成功"),
+    LOGIN_FAILD(101, "登录失败"),
+    SYSUSER_NOT_EXIST(102, "用户不存在"),
+    SYSUSER_INVALID(103, "用户被禁用"),
+    LOGIN_USER_ERROR(104, "登录用户获取错误"),
+    INVENTORY_NO_RECORD(105, "进销存没有记录"),
+    
     /**
      * 未登录 -100
      */
