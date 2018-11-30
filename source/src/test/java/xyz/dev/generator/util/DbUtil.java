@@ -10,10 +10,10 @@ public class DbUtil {
 	public static Connection getConn(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://101.132.104.23:3306/xyz_frame?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&&useSSL=false";
-//			String url = "jdbc:mysql://172.16.23.208:3307/information_schema?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8";
-			String user = "xyzframe";
-			String password = "xyzframe";
+			String url = "jdbc:mysql://101.132.104.23:3306/information_schema?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&&useSSL=false";
+//			String url = "jdbc:mysql://101.132.104.23:3306/information_schema?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8";
+			String user = "root";
+			String password = "502503504";
 			return DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

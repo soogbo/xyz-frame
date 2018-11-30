@@ -117,8 +117,6 @@ public class FrameShiroRealm extends AuthorizingRealm {
         RbacUser rbacUser = rbacUserService.getByUsername(username);
         if (null != rbacUser && password.equals(rbacUser.getPassword()) && ValidEnum.VALID.getIsValid().equals(rbacUser.getValid())) {
             // 用户信息放在session中
-            rbacUser.setPassword(null);
-            rbacUser.setSalt(null);
             RbacUserUtils.setUserToSession(rbacUser);
             return new SimpleAuthenticationInfo(rbacUser.getUsername(), rbacUser.getPassword(), ByteSource.Util.bytes(rbacUser.getSalt()), getName()); // realm
         } else {

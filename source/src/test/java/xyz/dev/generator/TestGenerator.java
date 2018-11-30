@@ -11,7 +11,7 @@ import xyz.dev.generator.main.MapperGenerator;
 public class TestGenerator{
     
     // 数据库名
-    public static final String tableSchema = "xyz_frame";
+    public static final String tableSchema = "xyz_ucenter";
 
     public static void autoGenSource(String tablename, String moduleName) {
         String entityName = "";
@@ -86,13 +86,14 @@ public class TestGenerator{
 			genSource(k,tableSchema,config.get(k),moduleName);
 		}*/
 	    
-	    autoGenSource("rbac_group", "rbac");
 	    autoGenSource("rbac_menu", "rbac");
 	    autoGenSource("rbac_permission", "rbac");
 	    autoGenSource("rbac_role", "rbac");
 	    autoGenSource("rbac_role_permission", "rbac");
 	    autoGenSource("rbac_user", "rbac");
 	    autoGenSource("rbac_user_role", "rbac");
+	    autoGenSource("rbac_user_sys", "rbac");
+	    autoGenSource("rbac_sys", "rbac");
 		
 		/*genSource("Category", "xyz_frame", "category", "mrshi");
 		genSource("Customer", "xyz_frame", "customer", "mrshi");

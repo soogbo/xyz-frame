@@ -10,9 +10,40 @@ public class DemoTest {
 
     public static void main(String[] args) {
 
-        test2();
+        test4();
     }
 
+    /**
+     * list倒序，null放最后面
+     */
+    static void test4() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(null);
+        list.add(3);
+        list.add(2);
+        System.out.println(list);
+        list.sort((v1, v2) -> {
+            if (v1 == null) {
+                return 1;
+            } else if (v2 == null || v1 > v2) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+        list.subList(1, list.size()).clear();
+        System.out.println(list);
+    }
+    
+    static void test3() {
+        String a = "{\"url\":\"http://u6.gg/cnExz\",\"error\":0}";
+        Object parse = JSON.parse(a);
+        System.out.println(parse);
+        test0();
+
+    }
+    
     static void test2() {
         List<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
@@ -22,14 +53,6 @@ public class DemoTest {
         if (arrayList.get(3) == null) {
             System.out.println("jhahaha"); // java.lang.IndexOutOfBoundsException
         }
-    }
-
-    static void test3() {
-        String a = "{\"url\":\"http://u6.gg/cnExz\",\"error\":0}";
-        Object parse = JSON.parse(a);
-        System.out.println(parse);
-        test0();
-
     }
 
     static void test0() {
@@ -47,4 +70,5 @@ public class DemoTest {
         System.out.println(Long.valueOf(split[inx++]));
         System.out.println(split[inx++]);
     }
+    
 }

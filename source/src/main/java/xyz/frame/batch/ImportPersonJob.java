@@ -32,7 +32,7 @@ public class ImportPersonJob {
     private Job importUserJob;
     @Autowired
     private JobLauncher jobLauncher;
-
+// 注解注入时间表达式，定时执行job
 //    @Scheduled(cron = "1/10 * * * * ? ")
     public void run() {
         try {

@@ -9,6 +9,8 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,10 +33,10 @@ public class LoginController {
      * @param token
      * @return
      */
-    @PostMapping(value = "/login")
+    @RequestMapping(value = "/login", method = { RequestMethod.POST, RequestMethod.GET })
     public GeneralResponse<Object> login(HttpServletResponse resp, @RequestParam(name = "username", required = true) String username,
             @RequestParam(name = "password", required = true) String password) {
-        AuthenticationToken authenticationToken = new UsernamePasswordToken(username, password, null);
+        AuthenticationToken authenticationToken = new UsernamePasswordToken(username, password);
 
         Subject subject = SecurityUtils.getSubject();
         if (subject.getSession(false) != null) {
