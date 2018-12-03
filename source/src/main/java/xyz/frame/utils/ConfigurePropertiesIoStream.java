@@ -19,6 +19,8 @@ import xyz.frame.pojo.common.ConfigKey;
 @Service
 public class ConfigurePropertiesIoStream {
 
+    private ConfigurePropertiesIoStream() {}
+    
 	/**
 	 * 日志
 	 */
@@ -39,6 +41,8 @@ public class ConfigurePropertiesIoStream {
 		try {
 			properties.load(new InputStreamReader(
 					ConfigurePropertiesIoStream.class.getClassLoader().getResourceAsStream(ConfigKey.CONFIG_FILE), "UTF-8"));
+			properties.load(new InputStreamReader(
+			        ConfigurePropertiesIoStream.class.getClassLoader().getResourceAsStream(ConfigKey.APP_CONFIG_FILE), "UTF-8"));
 		} catch (Exception e) {
 			logger.error("读取配置文件" + ConfigKey.CONFIG_FILE + "失败！");
 		}

@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import xyz.frame.datasource.DataSourceHolder;
+import xyz.frame.datasource.ReadSlave;
+import xyz.frame.datasource2.TargetDataSource;
 import xyz.frame.mapper.ParamParamMapper;
 import xyz.frame.pojo.po.ParamParam;
 import xyz.frame.service.ParamParamService;
@@ -22,6 +25,13 @@ public class ParamParamServiceImpl implements ParamParamService {
 
     @Override
     public List<ParamParam> findAll() {
+        return paramParamMapper.selectAll();
+    }
+    
+    @Override
+    @ReadSlave
+    @TargetDataSource(name="SLAVE")
+    public List<ParamParam> findAllSlave() {
         return paramParamMapper.selectAll();
     }
     

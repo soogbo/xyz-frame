@@ -28,6 +28,14 @@ public interface ParamParamService {
     List<ParamParam> findAll();
     
     /**
+     * 查询全部：从库
+     * 
+     * @param
+     * @return
+     */
+    List<ParamParam> findAllSlave();
+    
+    /**
      * 删除全部
      * 
      * @param

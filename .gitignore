@@ -22,3 +22,4 @@ tempsql/
 .pydevproject
 .settings/
 /.metadata/
+data/elasticsearch

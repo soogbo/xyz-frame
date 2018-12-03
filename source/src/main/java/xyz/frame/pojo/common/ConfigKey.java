@@ -9,6 +9,10 @@ public class ConfigKey {
      * 配置文件名
      */
     public static final String CONFIG_FILE = "configure.properties";
+    /**
+     * 系统配置文件名
+     */
+    public static final String APP_CONFIG_FILE = "application.properties";
     
 	/**
 	 * rocketmq服务器地址

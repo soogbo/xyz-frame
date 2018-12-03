@@ -43,6 +43,12 @@ public class ParamController {
         return RestResultUtil.success(list);
     }
     
+    @GetMapping("/param/findAllSlave")
+    public ResponseResult<?> findAllSlave() {
+        List<ParamParam> list = paramParamService.findAllSlave();
+        return RestResultUtil.success(list);
+    }
+    
     @GetMapping("/param/testDeleteAll")
     public ResponseResult<?> testDeleteAll() {
         paramParamService.testDeleteAll();
