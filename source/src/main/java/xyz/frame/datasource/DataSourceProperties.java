@@ -4,7 +4,14 @@ import java.util.List;
 
 public class DataSourceProperties {
 	
-	private String driverClassName = "com.mysql.jdbc.Driver";
+    /**
+     * mysql 5.x驱动包名
+     */
+	//private String driverClassName = "com.mysql.jdbc.Driver";
+    /**
+     * mysql 8.x驱动包名
+     */
+	private String driverClassName = "com.mysql.cj.jdbc.Driver";
 	//初始化连接数量
 	private int initialSize = 10;
 	//最小空闲连接数
