@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daikuan.oms.invite.mapper.OptimisticLockMapper">
+  <resultMap id="BaseResultMap" type="com.daikuan.oms.invite.entity.OptimisticLock">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lock_key" jdbcType="VARCHAR" property="lockKey" />
+    <result column="lock_status" jdbcType="TINYINT" property="lockStatus" />
+    <result column="valid_time" jdbcType="INTEGER" property="validTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+  </resultMap>
+
+  <sql id="t_timisticLock">optimistic_lock</sql>
+  <insert id="insertSelective" parameterType="com.daikuan.oms.invite.entity.OptimisticLock" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO
+    <include refid="t_timisticLock"/>
+    (
+    <trim suffixOverrides=",">
+      <if test="lockKey != null">
+        lock_key,
+      </if>
+      <if test="lockStatus != null">
+        lock_status,
+      </if>
+      <if test="threadId != null">
+        thread_id,
+      </if>
+      <if test="validTime != null">
+        valid_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+    </trim>
+    ) VALUES (
+    <trim suffixOverrides=",">
+      <if test="lockKey != null">
+        #{lockKey},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus},
+      </if>
+      <if test="threadId != null">
+        #{threadId},
+      </if>
+      <if test="validTime != null">
+        #{validTime},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+      <if test="createAt != null">
+        #{createAt},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt},
+      </if>
+    </trim>
+    )
+  </insert>
+
+  <update id="updateLockSelective">
+    UPDATE
+    <include refid="t_timisticLock"/>
+    <trim prefix="SET" suffixOverrides=",">
+      <if test="entity.lockKey != null">
+        lock_key = #{entity.lockKey},
+      </if>
+
+      <if test="entity.lockStatus != null">
+        lock_status = #{entity.lockStatus},
+      </if>
+
+      <if test="entity.threadId != null">
+        thread_id = #{entity.threadId},
+      </if>
+
+      <if test="entity.validTime != null">
+        valid_time = #{entity.validTime},
+      </if>
+
+      <if test="entity.endTime != null">
+        end_time = #{entity.endTime},
+      </if>
+
+      <if test="entity.createAt != null">
+        create_at = #{entity.createAt},
+      </if>
+
+      <if test="entity.updateAt != null">
+        update_at = #{entity.updateAt},
+      </if>
+
+    </trim>
+    <where>
+      <trim suffixOverrides=",">
+        <include refid="condition_sql"/>
+      </trim>
+    </where>
+
+  </update>
+
+  <select id="getValidLock" parameterType="com.daikuan.oms.invite.param.OptimisticLockParam" resultMap="BaseResultMap">
+    <include refid="listSQL"/>
+  </select>
+
+
+  <sql id="listSQL">
+    SELECT * FROM
+    <include refid="t_timisticLock"/>
+    <where>
+      <include refid="condition_sql"/>
+    </where>
+    ORDER BY id ASC
+  </sql>
+
+  <sql id="condition_sql">
+    <trim suffixOverrides="AND | OR">
+      <if test="param.id != null">
+        AND id = #{param.id}
+      </if>
+      <if test="param.lockKey != null">
+        AND lock_key = #{param.lockKey}
+      </if>
+      <if test="param.lockStatus != null">
+        AND lock_status = #{param.lockStatus}
+      </if>
+      <if test="param.threadId != null">
+        AND thread_id = #{param.threadId}
+      </if>
+      <if test="param.validTime != null">
+        AND valid_time = #{param.validTime}
+      </if>
+      <if test="param.createAt != null">
+        AND create_at = #{param.createAt}
+      </if>
+      <if test="param.updateAt != null">
+        AND update_at = #{param.updateAt}
+      </if>
+      <if test="param.endTime != null">
+        <![CDATA[ AND end_time > now()]]>
+      </if>
+
+    </trim>
+  </sql>
+
+</mapper>

@@ -23,6 +23,8 @@ public enum ResultEnum {
     LOGIN_USER_ERROR(104, "登录用户获取错误"),
     INVENTORY_NO_RECORD(105, "进销存没有记录"),
     
+    DISTRIBUTE_LOCK_GE_FAIL(201, "分布式锁获取失败"),
+    
     /**
      * 未登录 -100
      */

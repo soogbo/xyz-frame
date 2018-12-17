@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xyz.frame.datasource.DataSourceHolder;
 import xyz.frame.datasource.ReadSlave;
 import xyz.frame.datasource2.TargetDataSource;
 import xyz.frame.mapper.ParamParamMapper;
@@ -38,6 +37,11 @@ public class ParamParamServiceImpl implements ParamParamService {
     @Override
     public void testDeleteAll() {
         paramParamMapper.testDeleteAll();
+    }
+
+    @Override
+    public int save(ParamParam paramParam) {
+        return paramParamMapper.insert(paramParam);
     }
 
 }

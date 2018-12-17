@@ -3,7 +3,6 @@ package xyz.frame.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
 import tk.mybatis.mapper.common.BaseMapper;
 import xyz.frame.pojo.po.UserSharding;

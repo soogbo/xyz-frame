@@ -22,4 +22,8 @@ public class RestResultUtil {
 		result = new ResponseResult<>(code, msg, null);
 		return result;
 	}
+	
+	public static ResponseResult<?> error(ResultEnum resultEnum) {
+	    return new ResponseResult<>(resultEnum.getCode(), resultEnum.getMsg(), null);
+	}
 }

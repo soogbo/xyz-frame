@@ -42,4 +42,11 @@ public interface ParamParamService {
      * @return
      */
     void testDeleteAll();
+
+    /**
+     * 保存
+     * 
+     * @param paramParam
+     */
+    int save(ParamParam paramParam);
 }

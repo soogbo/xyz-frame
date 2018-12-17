@@ -86,6 +86,7 @@ public class MethodStyleIntefaceDemo {
     
     /**
      * Supplier接口产生一个给定类型的结果。与Function不同的是，Supplier没有输入参数
+     * get获取泛型T的实例，可作为对象供应器
      */
     static void suppliers(){
         Supplier<MethodStyleIntefaceDemo> personSupplier = MethodStyleIntefaceDemo::new;
