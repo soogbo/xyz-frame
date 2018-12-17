@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * java8方法引用：就是把方法当做参数传到stream内部，使stream的每个元素都传入到该方法里面执行一下
+ * java8方法引用(双冒号)：就是把方法当做参数传到stream内部，使stream的每个元素都传入到该方法里面执行一下
  * 
  * @author shisp
  * @date 2018-12-14 13:51:02
