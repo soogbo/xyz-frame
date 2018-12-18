@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.StringJoiner;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -48,6 +51,7 @@ public class StreamDemo {
         construcCollect();
         map();
         flatMap();
+        filterByObjField();
     }
 
     /**
@@ -299,6 +303,56 @@ public class StreamDemo {
         System.out.println(list);
         
     }
+    
+    /**
+     * filter根据对象某属性去重，并返回map，key为属性值，value为对象
+     */
+    private static void filterByObjField() {
+        ConcurrentHashMap<Object, Object> concurrentHashMap = new ConcurrentHashMap<>();
+        // null
+        System.out.println(concurrentHashMap.putIfAbsent("1", "1"));
+        // 1
+        System.out.println(concurrentHashMap.putIfAbsent("1", "1"));
+        
+//        list.add(1);
+//        list.add(1);
+//        list.add(2);
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        
+        System.out.println("======================================================");
+        Map<Integer, List<Integer>> map = list.stream()
+                .filter(distinctByKey(p -> p))
+                .collect(Collectors.toMap(p -> p, p -> {
+                    System.out.println("forEach:aaa " + p);
+                return new ArrayList<>();}));
+        System.out.println("======================================================");
+        list.stream()
+                .filter(s -> {
+                    System.out.println("测试调用几次:qqq " + s);
+                    return true;
+                })
+                .forEach(s -> System.out.println("forEach4: " + s));;
+        System.out.println("======================================================");
+
+        System.out.println(map);
+    }
+
+    /**
+     * 根据某字段去重
+     * @param keyExtractor
+     * @return
+     */
+    public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        System.out.println("测试调用几次，实际只会调用一次");
+        return object -> {
+            System.out.println("测试Predicate中调用几次，会执行多次，只会在Predicate对象中循环调用test方法，进行判断过滤");
+            return seen.putIfAbsent(keyExtractor.apply(object), Boolean.TRUE) == null;
+        };
+    }
+    
 }
-    
-    
