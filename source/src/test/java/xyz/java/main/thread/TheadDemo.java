@@ -12,6 +12,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
 /**
  * 线程与线程池
  * 
@@ -150,8 +152,17 @@ public class TheadDemo {
         // ForkJoinPools使用一个并行因子数来创建，默认值为主机CPU的可用核心数
         ExecutorService newWorkStealingPool = Executors.newWorkStealingPool();
         
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        System.out.println("当前CPU核心数：" + availableProcessors);
+        
         // 调度线程池，可延迟执行
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        
+        //大小无界的线程池，适用于执行很多的短期异步任务的小程序，或者是负载较轻的服务器
+        ExecutorService newCachedThreadPool = Executors.newCachedThreadPool();
+        
+        // 调度线程池，只有1个线程池
+        ScheduledExecutorService newSingleThreadScheduledExecutor = Executors.newSingleThreadScheduledExecutor();
 
     }
     
