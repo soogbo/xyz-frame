@@ -1,4 +1,4 @@
-package xyz.frame.distrbutelock;
+package xyz.frame.distrbutelock.db;
 
 /**
  * @Author wanghao created by 2018-08-31

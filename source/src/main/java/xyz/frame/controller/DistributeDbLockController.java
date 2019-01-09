@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import xyz.frame.distrbutelock.DistributeDbLockUtil;
-import xyz.frame.distrbutelock.DistributeLock;
-import xyz.frame.distrbutelock.LockConstant;
+import xyz.frame.distrbutelock.db.DistributeDbLockUtil;
+import xyz.frame.distrbutelock.db.DistributeLock;
+import xyz.frame.distrbutelock.db.LockConstant;
 import xyz.frame.exception.ServiceException;
 import xyz.frame.pojo.common.ResultEnum;
 import xyz.frame.pojo.po.ParamParam;

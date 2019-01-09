@@ -21,6 +21,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
 
+import xyz.frame.pojo.common.CharsetEnum;
+
 /**
  * http工具类
  * @author marshal.liu 
@@ -32,6 +34,18 @@ public class HttpClientUtils {
     public static final int HTTP_CONNECTION_TIMEOUT = 5000;
     public static final int HTTP_SOCKET_TIMEOUT = 30000;
 
+    
+    /**
+     * 提交文件内容,默认UTF_8
+     * @param url 地址
+     * @param requestJson 内容
+     * @return
+     */
+    public static String postJson(String url, String requestJson) {
+        return postJson(url, requestJson, CharsetEnum.UTF_8.getValue());
+    }
+    
+    
 	/**
 	 * 提交文件内容
 	 * @param url 地址

@@ -1,4 +1,4 @@
-package xyz.frame.distrbutelock;
+package xyz.frame.distrbutelock.db;
 
 import java.util.Date;
 

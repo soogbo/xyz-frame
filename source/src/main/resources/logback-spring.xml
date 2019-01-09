@@ -55,6 +55,7 @@
     <logger name="org.apache.zookeeper" level="ERROR" />
     <logger name="me.chyxion" level="ERROR" />
     <logger name="org.apache.kafka" level="ERROR" />
+    <logger name="org.apache.http" level="ERROR" />
     <logger name="kafka" level="ERROR" />
     <logger name="mybatis_xyz.frame" level="ERROR" />
 </configuration>
