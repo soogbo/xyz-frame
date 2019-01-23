@@ -44,6 +44,10 @@ public class DistributeLock {
         }
     }
 
+    /**
+     * 使用lua脚本保证操作原子性，上锁时value唯一，删除时先判断value是否存在再删除
+     * @return
+     */
     public boolean unlock() {
         String command = "if redis.call('get',KEYS[1]) == ARGV[1]\n" +
                 "then\n" +
