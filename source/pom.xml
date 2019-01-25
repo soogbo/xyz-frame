@@ -323,12 +323,12 @@
 	        </dependency>
 		<!-- elastic-job-lite end -->
 
-		<!-- ali大鱼 需手动安装依赖至本地maven库 -->
+		<!-- ali大鱼 需手动安装依赖至本地maven库
 		<dependency>
 			<groupId>com.alidayu</groupId>
 			<artifactId>alidayu</artifactId>
 			<version>1.0</version>
-		</dependency>
+		</dependency> -->
 		<!-- ali大鱼 -->
 
         <!-- swaggerUI -->
