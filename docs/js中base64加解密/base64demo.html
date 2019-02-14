@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>base64加密</title>
+	<script src="jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="jquery.base64.js"></script>
+	
+	<script type="text/javascript">  
+			var a="1234-5678901";
+			var b=$.base64.encode(a);
+			
+			console.log('明文：' + a);
+			console.log('加密：' + b);
+			// MTIzNC01Njc4OTAx
+			console.log('解密：' + $.base64.decode(b));
+	</script>  
+</head>
+<body>
+</body>
+</html>
