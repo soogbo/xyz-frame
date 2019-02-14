@@ -331,6 +331,13 @@
 		</dependency> -->
 		<!-- ali大鱼 -->
 
+		<!-- emoji过滤等 -->
+	    <dependency>
+	      <groupId>com.vdurmont</groupId>
+	      <artifactId>emoji-java</artifactId>
+	      <version>4.0.0</version>
+	    </dependency>
+
         <!-- swaggerUI -->
         <dependency>
             <groupId>io.springfox</groupId>
