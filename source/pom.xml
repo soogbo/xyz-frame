@@ -254,6 +254,13 @@
 		</dependency>
 		<!--end Commons -->
 		
+		<!-- pinyin util -->
+		<dependency>
+            <groupId>com.pinyin4j</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+		
 		<!-- jcraft for sftp-->
 		<dependency>
             <groupId>com.jcraft</groupId>
@@ -273,6 +280,7 @@
 			<artifactId>shiro-redis</artifactId>
 			<version>2.4.2.1-RELEASE</version>
 		</dependency>
+		<!--end pinyin util -->
 		
 		<!-- begin web -->
 		<dependency>
