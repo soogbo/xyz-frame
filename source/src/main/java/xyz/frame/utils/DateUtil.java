@@ -287,6 +287,20 @@ public class DateUtil {
         calendar.add(Calendar.DAY_OF_MONTH, offset);
         return getFormatTimeString(calendar.getTime(), pattern);
     }
+    public static long getDayByOffsetLong(Date date, int offset) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        Calendar beforeTime = Calendar.getInstance();
+        beforeTime.add(Calendar.DAY_OF_MONTH, offset);
+        return beforeTime.getTimeInMillis();
+    }
+    public static long getHourByOffset(Date date, int offset) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        Calendar beforeTime = Calendar.getInstance();
+        beforeTime.add(Calendar.HOUR_OF_DAY, offset);
+        return beforeTime.getTimeInMillis();
+    }
 
     /**
      * 获取指定时间前/后 offset 天
