@@ -482,6 +482,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- modelmapper do bo转换工具 -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.3</version>
+        </dependency>
 
 		<!-- Eclipse报错时，添加此依赖：Missing artifact jdk.tools:jdk.tools:jar: -->
             <dependency>
