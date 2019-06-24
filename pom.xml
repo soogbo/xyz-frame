@@ -23,9 +23,9 @@
         <module>frame-facade</module>
         <module>frame-intergration</module>
         <module>frame-pojo</module>
+        <module>frame-service</module>
         <module>frame-web</module>
-        <module>source</module>
-    </modules>
+    </modules> 
 
     <properties>
         <java.version>1.8</java.version>
