@@ -86,3 +86,13 @@
 18.分环境自动编译配置文件config
 19.mvc-config配置(拦截器，视图解析器等)
 20.
+
+##### V20190624 分层结构调整
+frame-api 对外dubbo接口jar
+frame-base 基础通用信息:工具类,常量类，枚举类等
+frame-biz 业务逻辑处理层
+frame-facade 对外层：对外dubbo接口实现，接收mq，job入口
+frame-intergration 外部渠道集成：调用外部dubbo http 推送mq
+frame-pojo DO VO BO ENUMS等
+frame-service 原子层service dao
+frame-web 对外http接口：前端接口，对外系统接口
