@@ -1,6 +1,7 @@
 package xyz.frame.mongo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -42,9 +43,18 @@ public class MongoCustomerRepositoryImpl implements MongoCustomerRepository {
     }
 
     @Override
-    public MongoCustomer findById(String id) {
-        Query query = new Query().addCriteria(Criteria.where("id").is(id));
-        return mongoTemplate.findOne(query, MongoCustomer.class);
+    public boolean existsById(String s) {
+        return false;
+    }
+
+    @Override
+    public <S extends MongoCustomer> List<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public Optional<MongoCustomer> findById(String s) {
+        return Optional.empty();
     }
 
     @Override
@@ -53,8 +63,7 @@ public class MongoCustomerRepositoryImpl implements MongoCustomerRepository {
     }
 
     @Override
-    public <S extends MongoCustomer> List<S> save(Iterable<S> entites) {
-        // TODO Auto-generated method stub
+    public Iterable<MongoCustomer> findAllById(Iterable<String> strings) {
         return null;
     }
 
@@ -74,6 +83,11 @@ public class MongoCustomerRepositoryImpl implements MongoCustomerRepository {
     public <S extends MongoCustomer> List<S> insert(Iterable<S> entities) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public <S extends MongoCustomer> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
     }
 
     @Override
@@ -101,46 +115,29 @@ public class MongoCustomerRepositoryImpl implements MongoCustomerRepository {
     }
 
     @Override
-    public void delete(String arg0) {
-        // TODO Auto-generated method stub
-        
+    public void deleteById(String s) {
+
     }
+
 
     @Override
     public void delete(MongoCustomer arg0) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
-    public void delete(Iterable<? extends MongoCustomer> arg0) {
-        // TODO Auto-generated method stub
-        
+    public void deleteAll(Iterable<? extends MongoCustomer> entities) {
+
     }
+
 
     @Override
     public void deleteAll() {
         // TODO Auto-generated method stub
-        
+
     }
 
-    @Override
-    public boolean exists(String arg0) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public Iterable<MongoCustomer> findAll(Iterable<String> arg0) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public MongoCustomer findOne(String arg0) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public <S extends MongoCustomer> S save(S arg0) {
@@ -166,10 +163,5 @@ public class MongoCustomerRepositoryImpl implements MongoCustomerRepository {
         return null;
     }
 
-    @Override
-    public <S extends MongoCustomer> S findOne(Example<S> arg0) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 }

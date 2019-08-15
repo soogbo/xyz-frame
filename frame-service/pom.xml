@@ -250,14 +250,19 @@
 			<artifactId>httpmime</artifactId>
 		</dependency>
 		<!--end Commons -->
-		
-		<!-- pinyin util -->
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<!-- pinyin util
 		<dependency>
             <groupId>com.pinyin4j</groupId>
             <artifactId>pinyin4j</artifactId>
             <version>2.5.0</version>
-        </dependency>
-		
+        </dependency> -->
+
+
 		<!-- jcraft for sftp-->
 		<dependency>
             <groupId>com.jcraft</groupId>

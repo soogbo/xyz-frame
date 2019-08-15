@@ -34,7 +34,7 @@ public class ElasticSearchController {
     // 删除
     @RequestMapping("/delete")
     public GeneralResponse<String> delete() {
-        employeeRepository.delete("1");
+        employeeRepository.delete(null);
         logger.info("del a obj");
         return GeneralResponse.success();
     }

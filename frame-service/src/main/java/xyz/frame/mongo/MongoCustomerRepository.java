@@ -10,6 +10,4 @@ public interface MongoCustomerRepository extends MongoRepository<MongoCustomer, 
 
     List<MongoCustomer> findByGroupId(Long groupId);
 
-    MongoCustomer findById(String id);
-
 }
