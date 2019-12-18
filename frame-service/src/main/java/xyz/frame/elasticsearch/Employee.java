@@ -1,24 +1,24 @@
 package xyz.frame.elasticsearch;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
+//import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.elasticsearch.annotations.Field;
 
 // indexName ：索引名字（对应mysql的数据库名字）
 //type:类型（对应mysql的表名）
 
-@Document(indexName = "megacorp", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
+//@Document(indexName = "megacorp", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
 
 public class Employee {
     @Id
     private String id;
-    @Field
+    //@Field
     private String firstName;
-    @Field
+    //@Field
     private String lastName;
-    @Field
+    //@Field
     private Integer age = 0;
-    @Field
+    //@Field
     private String about;
 
     public String getId() {

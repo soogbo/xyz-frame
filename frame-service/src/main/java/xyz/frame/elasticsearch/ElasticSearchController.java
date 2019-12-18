@@ -14,7 +14,7 @@ import xyz.frame.utils.GeneralResponse;
 public class ElasticSearchController {
     private static final Logger logger = LoggerFactory.getLogger(BatchController.class);
 
-    @Autowired
+    //@Autowired
     private EmployeeRepository employeeRepository;
 
     // 增加
@@ -26,7 +26,7 @@ public class ElasticSearchController {
         employee.setLastName("zh");
         employee.setAge(26);
         employee.setAbout("i am in peking");
-        employeeRepository.save(employee);
+        //employeeRepository.save(employee);
         logger.info("add a obj");
         return GeneralResponse.success(employee);
     }
@@ -34,7 +34,7 @@ public class ElasticSearchController {
     // 删除
     @RequestMapping("/delete")
     public GeneralResponse<String> delete() {
-        employeeRepository.delete(null);
+        //employeeRepository.delete(null);
         logger.info("del a obj");
         return GeneralResponse.success();
     }
@@ -44,7 +44,7 @@ public class ElasticSearchController {
     public GeneralResponse<Employee> update() {
         Employee employee = employeeRepository.queryEmployeeById("1");
         employee.setFirstName("哈哈");
-        employeeRepository.save(employee);
+        //employeeRepository.save(employee);
         logger.info("update a obj");
         return GeneralResponse.success(employee);
     }

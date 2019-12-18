@@ -17,6 +17,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 
+import org.springframework.stereotype.Component;
 import xyz.frame.exception.ServiceException;
 import xyz.frame.pojo.common.ResultEnum;
 import xyz.frame.pojo.common.ValidEnum;
@@ -34,7 +35,7 @@ import xyz.frame.utils.RbacUserUtils;
  * @author shisp
  * @date 2018-7-27 13:29:19
  */
-// @Component("frameShiroRealm")
+@Component("frameShiroRealm")
 public class FrameShiroRealm extends AuthorizingRealm {
 
     @Lazy

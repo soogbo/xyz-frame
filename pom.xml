@@ -91,11 +91,11 @@
                         <printFailingErrors>true</printFailingErrors>
                     </configuration>
                     <dependencies>
-                        <dependency>
+                        <!--<dependency>
                             <groupId>com.alibaba.p3c</groupId>
                             <artifactId>p3c-pmd</artifactId>
                             <version>1.3.0</version>
-                        </dependency>
+                        </dependency>-->
                     </dependencies>
                 </plugin>
             </plugins>

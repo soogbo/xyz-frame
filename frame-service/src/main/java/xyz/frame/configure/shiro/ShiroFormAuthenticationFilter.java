@@ -20,6 +20,7 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
 		if (this.isLoginRequest(request, response)) {
 			if (this.isLoginSubmission(request, response)) {
 				return this.executeLogin(request, response);
+				//return true;
 			} else {
 				return true;
 			}
