@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<quartz.version>2.2.1</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<rocketmq.version>4.0.0-incubating</rocketmq.version>
 		<elastic.job.version>2.1.5</elastic.job.version>
         <curator.version>2.12.0</curator.version>
